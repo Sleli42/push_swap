@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+         #
+#    By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/24 00:57:49 by lubaujar          #+#    #+#              #
-#    Updated: 2015/08/05 17:48:59 by sleli42          ###   ########.fr        #
+#    Updated: 2015/08/06 00:01:41 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LDFLAGS = -I./include/ -I./libft/include/
 
 SRC = main.c \
 	init.c \
-	list.c
+	list.c \
+	display.c
 
 OBJ = $(SRC:.c=.o)
 	SRCDIR	= ./srcs/

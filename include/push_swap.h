@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/08/05 23:55:15 by lubaujar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -29,6 +41,16 @@ t_all		*init_all(int ac, char **av);
 */
 t_val		*lst_create_elem(int	nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
-void		display_list(t_val *lst);
+// void		display_list(t_val *lst);
+/*
+*** display.c
+*/
+void		display_pile(t_all *all);
+void		display_formatting(t_val *pile);
+/*
+*** error.c
+*/
+int			check_error(t_val *pile);
+int			check_doublons(t_val *pile);
 
 #endif

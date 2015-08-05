@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/05 23:55:02 by lubaujar          #+#    #+#             */
+/*   Created: 2015/08/06 00:13:12 by lubaujar          #+#    #+#             */
 /*   Updated: 2015/08/06 00:20:24 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display_formatting(t_val *pile)
+int		check_error(t_val *pile)
 {
 	if (pile)
 	{
-		while (pile)
-		{
-			ft_putstr("\t[ ");
-			ft_putnbr(pile->val);
-			ft_putstr(" ]\n");
-			pile = pile->next;
-		}
+		if (check_doublons(pile) == -1)
+			return (-1);
 	}
-	else
-		ft_putstr("\tempty pile\n");
 }
 
-void	display_pile(t_all *all)
+int		check_doublons(t_val *pile)
 {
-	ft_putstr("Pile a:\n");
-	display_formatting(all->a);
-	ft_putstr("Pile b:\n");
-	display_formatting(all->b);
+
 }
