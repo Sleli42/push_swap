@@ -6,22 +6,52 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/06 00:13:12 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/06 00:20:24 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/06 05:12:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		check_error(t_val *pile)
+void	error(char *err)
 {
-	if (pile)
+	if (ft_strcmp(err, "NO DIGIT") == 0)
+		ft_putstr("Error\nmore infos: Params not digit\n"), exit(1);
+	if (ft_strcmp(err, "DOUBLONS") == 0)
+		ft_putstr("Error\nmore infos: Doublons\n"), exit(1);
+}
+
+void	check_error(t_all *all)
+{
+	t_val	*tmp;
+	int		i;
+
+	tmp = all->a;
+	i = 0;
+	if (tmp)
 	{
-		if (check_doublons(pile) == -1)
-			return (-1);
+		while (i < (int)all->nb_arg)
+		{
+			check_doublons(all->a, tmp->val);
+			i++;
+			tmp = tmp->next;
+		}
 	}
 }
 
-int		check_doublons(t_val *pile)
+void	check_doublons(t_val *pile, int val)
 {
+	int		ret;
 
+	ret = 0;
+	if (pile)
+	{
+		while (pile)
+		{
+			if (pile->val == val)
+				ret++;
+			pile = pile->next;
+		}
+	}
+	if (ret >= 2)
+		error("DOUBLONS");
 }

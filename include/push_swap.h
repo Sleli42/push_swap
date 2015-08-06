@@ -50,7 +50,8 @@ void		display_formatting(t_val *pile);
 /*
 *** error.c
 */
-int			check_error(t_val *pile);
-int			check_doublons(t_val *pile);
+void		error(char *err);
+void		check_error(t_all *all);
+void		check_doublons(t_val *pile, int val);
 
 #endif

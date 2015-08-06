@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/05 23:55:09 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/06 05:12:25 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ t_val	*create_stack(int ac, char **av)
 	lst = NULL;
 	i = 1;
 	while (i < ac)
-		lst_add_elem_back(&lst, lst_create_elem(ft_atoi(av[i]))), i++;
+	{
+		// if (av[i][0] <= '0' && av[i][0] >= '9')
+		// 	printf("av[i] = %s\n", av[i]), exit(1);
+		if (ft_isdigit(av[i][0]) == 0)
+			error("NO DIGIT");
+		else
+			lst_add_elem_back(&lst, lst_create_elem(ft_atoi(av[i]))), i++;
+	}
 	return (lst);
 
 }
