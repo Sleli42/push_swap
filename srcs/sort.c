@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 05:00:29 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/08/11 05:03:41 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		main(int ac, char **av)
+void	lulu_sort(t_all *all)
 {
-	t_all	*all;
+	t_val	*tmp;
+	int		ct;
 
-	all = NULL;
-	if (ac > 1)
+	tmp = all->a;
+	ct = 0;
+	if (tmp)
 	{
-		all = init_all(ac, av);
-		check_error(all);
-		display_pile(all);
-		choose_sort(all);
+		while (tmp)
+		{
+			if (tmp->val <= all->median)
+				pb(&all->b, lst_create_elem(tmp->val), &all->a, tmp->val);
+			tmp = tmp->next;
+		}
 	}
-	return (0);
+	display_pile(all);
+	exit(1);
 }

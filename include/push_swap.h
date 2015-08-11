@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/05 23:55:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 05:03:56 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ typedef	struct	s_all
 {
 	t_val		*a;
 	t_val		*b;
+	t_val		*already_sort;
+	int			median;
 	size_t		nb_arg;
+	int			ope;
 }				t_all;
 
 /*
@@ -41,17 +44,33 @@ t_all		*init_all(int ac, char **av);
 */
 t_val		*lst_create_elem(int	nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
-// void		display_list(t_val *lst);
+void		lst_del_elem(t_val **a);
+void		sort_list(t_val **pile, int nb_elems);
 /*
 *** display.c
 */
 void		display_pile(t_all *all);
 void		display_formatting(t_val *pile);
 /*
+*** sort.c
+*/
+void		lulu_sort(t_all *all);
+/*
+*** tools.c
+*/
+void		choose_sort(t_all *all);
+void		swap_elem(t_val **a, t_val **b);
+int			find_median(t_val *sorted, int val2stop);
+/*
+*** operations.c
+*/
+void		pb(t_val **b, t_val *elem, t_val **a, int val2del);
+/*
 *** error.c
 */
 void		error(char *err);
 void		check_error(t_all *all);
+void		check_sort_params(t_val *pile, int nb_arg);
 void		check_doublons(t_val *pile, int val);
 
 #endif

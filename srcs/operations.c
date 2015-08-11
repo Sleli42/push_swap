@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 05:00:29 by lubaujar         ###   ########.fr       */
+/*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
+/*   Updated: 2015/08/11 05:04:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		main(int ac, char **av)
+void	pb(t_val **b, t_val *elem, t_val **a, int val2del)
 {
-	t_all	*all;
-
-	all = NULL;
-	if (ac > 1)
-	{
-		all = init_all(ac, av);
-		check_error(all);
-		display_pile(all);
-		choose_sort(all);
-	}
-	return (0);
+	lst_add_elem_back(b, elem);
+	lst_del_elem(a, val2del);
 }
+
+
+
+/* ==================
+
+del 1 elem list
+
+================== */

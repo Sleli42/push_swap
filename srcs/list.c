@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/06 05:12:29 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 04:50:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_val	*lst_create_elem(int nb)
 	t_val	*elem;
 
 	if (!(elem = (t_val*)malloc(sizeof(t_val))))
-		printf("Malloc error (lst_create_elem)\n"), exit(0);
+		return (NULL);
 	elem->val = nb;
 	elem->next = NULL;
 	elem->prev = NULL;
@@ -45,14 +45,32 @@ void	lst_add_elem_back(t_val **lst, t_val *new)
 		return ;
 }
 
-void	display_list(t_val *lst)
+void	sort_list(t_val **pile, int nb_elem)
 {
 	t_val	*tmp;
 
-	tmp = lst;
-	while (tmp)
+	tmp = *pile;
+	while (nb_elem > 0)
 	{
-		printf("->%d\n", tmp->val);
-		tmp = tmp->next;
+		while (tmp->next)
+		{
+			if (tmp->val > tmp->next->val)
+				swap_elem(&tmp, &tmp->next);
+			tmp = tmp->next;
+		}
+		nb_elem--;
+		tmp = *pile;
+	}
+}
+
+void	lst_del_first(t_val **pile)
+{
+	t_val	*tmp;
+
+	tmp = *pile;
+	if (tmp)
+	{
+		*pile = tmp->next;
+		free(tmp);
 	}
 }
