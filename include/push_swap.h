@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 21:45:44 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 23:20:45 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_all		*init_all(int ac, char **av);
 /*
 *** list.c
 */
-t_val		*lst_create_elem(int	nb);
+t_val		*lst_create_elem(int nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
 void		lst_add_elem_front(t_val **lst, t_val *new);
 void		lst_del_elem(t_val **a, int val2del);
-void		sort_list(t_val **pile, int nb_elems);
+int			len_lst(t_val *lst);
 /*
 *** display.c
 */
@@ -56,16 +56,18 @@ void		display_formatting(t_val *pile);
 *** sort.c
 */
 void		lulu_sort(t_all *all);
+void		sort_list(t_val **pile, int nb_elems);
 /*
 *** tools.c
 */
 void		choose_sort(t_all *all);
 void		swap_elem(t_val **a, t_val **b);
 int			find_median(t_val *sorted, int val2stop);
+int			need2swap(t_all *all);
 /*
 *** operations.c
 */
-void		pb(t_val **b, t_val *elem, t_val **a, int val2del);
+void		pb(t_all *all, t_val *elem, int val2del);
 /*
 *** error.c
 */

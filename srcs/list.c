@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 21:58:07 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 23:00:47 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,22 @@ void	lst_add_elem_front(t_val **lst, t_val *new)
 		return ;
 }
 
-void	sort_list(t_val **pile, int nb_elem)
+int		len_lst(t_val *lst)
 {
 	t_val	*tmp;
+	int		ret;
 
-	tmp = *pile;
-	while (nb_elem > 0)
+	tmp = lst;
+	ret = 0;
+	if (tmp)
 	{
-		while (tmp->next)
+		while (tmp)
 		{
-			if (tmp->val > tmp->next->val)
-				swap_elem(&tmp, &tmp->next);
 			tmp = tmp->next;
+			ret++;
 		}
-		nb_elem--;
-		tmp = *pile;
 	}
+	return (ret);
 }
 
 void	lst_del_elem(t_val **pile, int val2del)
