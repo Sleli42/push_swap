@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 20:14:07 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/11 21:58:07 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,26 @@ void	lst_add_elem_back(t_val **lst, t_val *new)
 		return ;
 }
 
+void	lst_add_elem_front(t_val **lst, t_val *new)
+{
+	t_val	*tmp;
+
+	tmp = *lst;
+	if (new != NULL)
+	{
+		if (*lst == NULL)
+			*lst = new;
+		else
+		{
+			new->prev = NULL;
+			new->next = (*lst);
+			*lst = new;
+		}
+	}
+	else
+		return ;
+}
+
 void	sort_list(t_val **pile, int nb_elem)
 {
 	t_val	*tmp;
@@ -72,26 +92,23 @@ void	lst_del_elem(t_val **pile, int val2del)
 	{
 		if (tmp->val == val2del)
 		{
-			if (tmp->next == *pile)
+			if (tmp->next == NULL)
+				tmp->prev->next = NULL;
+			else if (tmp->prev == NULL)
 			{
-				(*pile)->prev = tmp->prev;
-				tmp->prev->next = (*pile);
-				free(tmp);
-			}
-			if (tmp->prev == *pile)
-			{
-				(*pile)->next = tmp->next;
-				tmp->next->prev = (*pile);
-				free(tmp);
+				(*pile) = tmp->next;
+				(*pile)->prev = NULL;
+				(*pile)->next = tmp->next->next;
 			}
 			else
 			{
 				tmp->prev->next = tmp->next;
 				tmp->next->prev = tmp->prev;
-				free (tmp);
 			}
+			free (tmp);
 			return ;
 		}
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
 }
