@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 04:50:20 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 20:14:07 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,35 @@ void	sort_list(t_val **pile, int nb_elem)
 	}
 }
 
-void	lst_del_first(t_val **pile)
+void	lst_del_elem(t_val **pile, int val2del)
 {
 	t_val	*tmp;
 
 	tmp = *pile;
-	if (tmp)
+	while (tmp)
 	{
-		*pile = tmp->next;
-		free(tmp);
+		if (tmp->val == val2del)
+		{
+			if (tmp->next == *pile)
+			{
+				(*pile)->prev = tmp->prev;
+				tmp->prev->next = (*pile);
+				free(tmp);
+			}
+			if (tmp->prev == *pile)
+			{
+				(*pile)->next = tmp->next;
+				tmp->next->prev = (*pile);
+				free(tmp);
+			}
+			else
+			{
+				tmp->prev->next = tmp->next;
+				tmp->next->prev = tmp->prev;
+				free (tmp);
+			}
+			return ;
+		}
+		tmp = tmp->next;
 	}
 }

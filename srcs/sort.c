@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 05:03:41 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 20:01:03 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	lulu_sort(t_all *all)
 {
 	t_val	*tmp;
-	int		ct;
 
 	tmp = all->a;
-	ct = 0;
 	if (tmp)
 	{
 		while (tmp)
@@ -29,5 +27,4 @@ void	lulu_sort(t_all *all)
 		}
 	}
 	display_pile(all);
-	exit(1);
 }

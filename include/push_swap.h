@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 05:03:56 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/11 19:59:55 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_all		*init_all(int ac, char **av);
 */
 t_val		*lst_create_elem(int	nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
-void		lst_del_elem(t_val **a);
+void		lst_del_elem(t_val **a, int val2del);
 void		sort_list(t_val **pile, int nb_elems);
 /*
 *** display.c
