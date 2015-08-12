@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 23:20:45 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/12 05:49:39 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_all		*init_all(int ac, char **av);
 t_val		*lst_create_elem(int nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
 void		lst_add_elem_front(t_val **lst, t_val *new);
-void		lst_del_elem(t_val **a, int val2del);
+void		lst_del_elem(t_val **a);
 int			len_lst(t_val *lst);
 /*
 *** display.c
@@ -55,6 +55,7 @@ void		display_formatting(t_val *pile);
 /*
 *** sort.c
 */
+int			check_stack(t_all *all, t_val *a, t_val *b, t_val *end_a, t_val *end_b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*
@@ -63,11 +64,16 @@ void		sort_list(t_val **pile, int nb_elems);
 void		choose_sort(t_all *all);
 void		swap_elem(t_val **a, t_val **b);
 int			find_median(t_val *sorted, int val2stop);
-int			need2swap(t_all *all);
+t_val		*goto_last_elem(t_val *pile);
 /*
 *** operations.c
 */
-void		pb(t_all *all, t_val *elem, int val2del);
+void		pb(t_all *all, t_val *elem);
+int			need2swap_or_rotate(t_all *all, t_val *last_elem);
+void		rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
+void		rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
+void		ra(t_all *all, t_val *a, t_val *last_a);
+void		rb(t_all *all, t_val *b, t_val *last_b);
 /*
 *** error.c
 */

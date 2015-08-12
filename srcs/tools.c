@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 23:20:50 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/12 05:15:13 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	choose_sort(t_all *all)
 {
 	if (all->nb_arg >= 10)
 	{
-		ft_putstr("\n\nsort >= 10 params:\n\n");
+		//ft_putstr("\n\nsort >= 10 params:\n\n");
 		lulu_sort(all);
 	}
 	display_pile(all);
+	printf("\n\nnb ope: %d\n", all->ope);
 }
 
 void	swap_elem(t_val **a, t_val **b)
@@ -38,17 +39,12 @@ int		find_median(t_val *sorted, int val2stop)
 	return (sorted->val);
 }
 
-int		need2swap(t_all *all)
+t_val	*goto_last_elem(t_val *pile)
 {
-	t_val	*tmp;;
+	t_val	*tmp;
 
-	tmp = all->a;
-	if (tmp->val > tmp->next->val)
-	{
-		swap_elem(&tmp, &tmp->next);
-		all->ope++;
-		return (1);
-		// ft_putstr("sa");
-	}
-	return (0);
+	tmp = pile;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }

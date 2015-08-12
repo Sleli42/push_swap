@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 23:00:47 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/12 04:43:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,32 +83,16 @@ int		len_lst(t_val *lst)
 	return (ret);
 }
 
-void	lst_del_elem(t_val **pile, int val2del)
+void	lst_del_elem(t_val **pile)
 {
 	t_val	*tmp;
 
 	tmp = *pile;
-	while (tmp)
+	if (tmp && tmp->prev == NULL)
 	{
-		if (tmp->val == val2del)
-		{
-			if (tmp->next == NULL)
-				tmp->prev->next = NULL;
-			else if (tmp->prev == NULL)
-			{
-				(*pile) = tmp->next;
-				(*pile)->prev = NULL;
-				(*pile)->next = tmp->next->next;
-			}
-			else
-			{
-				tmp->prev->next = tmp->next;
-				tmp->next->prev = tmp->prev;
-			}
-			free (tmp);
-			return ;
-		}
-		else
-			tmp = tmp->next;
+		(*pile) = tmp->next;
+		(*pile)->prev = NULL;
+		(*pile)->next = tmp->next->next;
+		free(tmp);
 	}
 }
