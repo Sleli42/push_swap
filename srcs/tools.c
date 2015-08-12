@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 05:15:13 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/12 08:57:45 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	choose_sort(t_all *all)
 		//ft_putstr("\n\nsort >= 10 params:\n\n");
 		lulu_sort(all);
 	}
+	else
+		mini_sort(all);
 	display_pile(all);
 	printf("\n\nnb ope: %d\n", all->ope);
 }

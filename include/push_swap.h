@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 05:49:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/12 09:50:34 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void		display_formatting(t_val *pile);
 /*
 *** sort.c
 */
-int			check_stack(t_all *all, t_val *a, t_val *b, t_val *end_a, t_val *end_b);
+
+void		check_stack_swap(t_all *all, t_val *a, t_val *b);
+int			check_stack_push(t_all *all, t_val *a, t_val *b);
+int			check_stack_rotate(t_all *all, t_val *a, t_val *b, t_val *end_a, t_val *end_b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*
@@ -66,14 +69,24 @@ void		swap_elem(t_val **a, t_val **b);
 int			find_median(t_val *sorted, int val2stop);
 t_val		*goto_last_elem(t_val *pile);
 /*
-*** operations.c
+*** r_op.c
 */
-void		pb(t_all *all, t_val *elem);
-int			need2swap_or_rotate(t_all *all, t_val *last_elem);
 void		rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
 void		rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
 void		ra(t_all *all, t_val *a, t_val *last_a);
 void		rb(t_all *all, t_val *b, t_val *last_b);
+/*
+*** r_op.c
+*/
+void		pb(t_all *all, t_val *elem);
+void		pa(t_all *all, t_val *elem);
+int			need2swap_or_rotate(t_all *all, t_val *last_elem);
+/*
+*** s_op.c
+*/
+void		sa(t_val *a);
+void		sb(t_val *b);
+void		ss(t_val *a, t_val *b);
 /*
 *** error.c
 */

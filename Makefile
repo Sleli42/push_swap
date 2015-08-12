@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+         #
+#    By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/24 00:57:49 by lubaujar          #+#    #+#              #
-#    Updated: 2015/08/11 00:42:47 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/08/12 09:50:50 by sleli42          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC = main.c \
 	error.c \
 	tools.c \
 	sort.c \
-	operations.c
+	r_op.c \
+	p_op.c \
+	s_op.c
 
 OBJ = $(SRC:.c=.o)
 	SRCDIR	= ./srcs/
