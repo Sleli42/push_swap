@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 08:57:45 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/12 21:41:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	choose_sort(t_all *all)
 		lulu_sort(all);
 	}
 	else
-		mini_sort(all);
+		mini_sort(all, (len_lst(all->a) * 2));
 	display_pile(all);
 	printf("\n\nnb ope: %d\n", all->ope);
 }
@@ -41,7 +41,7 @@ int		find_median(t_val *sorted, int val2stop)
 	return (sorted->val);
 }
 
-t_val	*goto_last_elem(t_val *pile)
+t_val	*goto_last(t_val *pile)
 {
 	t_val	*tmp;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 09:50:34 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/12 21:37:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,11 @@ void		display_formatting(t_val *pile);
 /*
 *** sort.c
 */
-
+int			is_sort(t_val *a, size_t nb_arg);
+void		mini_sort(t_all *all, int size);
 void		check_stack_swap(t_all *all, t_val *a, t_val *b);
 int			check_stack_push(t_all *all, t_val *a, t_val *b);
-int			check_stack_rotate(t_all *all, t_val *a, t_val *b, t_val *end_a, t_val *end_b);
+int			check_stack_rotate(t_all *all, t_val *a, t_val *b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*
@@ -67,7 +68,7 @@ void		sort_list(t_val **pile, int nb_elems);
 void		choose_sort(t_all *all);
 void		swap_elem(t_val **a, t_val **b);
 int			find_median(t_val *sorted, int val2stop);
-t_val		*goto_last_elem(t_val *pile);
+t_val		*goto_last(t_val *pile);
 /*
 *** r_op.c
 */
@@ -84,9 +85,9 @@ int			need2swap_or_rotate(t_all *all, t_val *last_elem);
 /*
 *** s_op.c
 */
-void		sa(t_val *a);
-void		sb(t_val *b);
-void		ss(t_val *a, t_val *b);
+void		sa(t_all *all, t_val *a);
+void		sb(t_all *all, t_val *b);
+void		ss(t_all *all, t_val *a, t_val *b);
 /*
 *** error.c
 */
