@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/13 06:30:43 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/14 01:25:30 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef	struct	s_all
 	t_val		*b;
 	t_val		*already_sort;
 	int			median;
+	int			it_to_b;
+	int			it_to_a;
 	size_t		nb_arg;
 	int			ope;
 }				t_all;
@@ -57,9 +59,8 @@ void		display_formatting(t_val *pile);
 */
 int			is_sort(t_val *pile, int tri);
 void		mini_sort(t_all *all);
-int			check_stack_swap(t_all *all, t_val *a, t_val *b);
+int			check_stack_swap_or_rot(t_all *all, t_val *a, t_val *b);
 int			check_stack_push(t_all *all, t_val *a, t_val *b);
-int			check_stack_rotate(t_all *all, t_val *a, t_val *b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*
@@ -81,7 +82,6 @@ int			rb(t_all *all, t_val *b, t_val *last_b);
 */
 int			pb(t_all *all, t_val *elem);
 int			pa(t_all *all, t_val *elem);
-int			need2swap_or_rotate(t_all *all, t_val *last_elem);
 /*
 *** s_op.c
 */

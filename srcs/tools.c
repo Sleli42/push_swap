@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/13 06:21:44 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/14 01:23:58 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 void	choose_sort(t_all *all)
 {
-	// if (all->nb_arg >= 10)
-	// {
-	// 	//ft_putstr("\n\nsort >= 10 params:\n\n");
-	// 	lulu_sort(all);
-	// }
-	// else
-	mini_sort(all);
+	if (all->nb_arg > 1 && all->nb_arg <= 6)
+		mini_sort(all);
 	display_pile(all);
-	printf("\n\nnb ope: %d\n", all->ope);
+	printf("nb ope: %d\n", all->ope);
 }
 
 void	swap_elem(t_val **a, t_val **b)

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 05:00:23 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/14 01:47:38 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@ t_val	*create_stack(int ac, char **av)
 {
 	t_val	*lst;
 	int		i;
-	int		tmp;
 
 	lst = NULL;
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_isdigit(av[i][0]) == 0)
+		if (av[i][0] != '-' && ft_isdigit(av[i][0]) == 0)
 			error("NO DIGIT");
-		if (av[i][0] != '-' && (tmp = ft_atoi(av[i])) == -1)
+		if (av[i][0] != '-' && ft_atoi(av[i]) == -1)
 			error("OVERFLOW");
 		else
-			lst_add_elem_back(&lst, lst_create_elem(tmp)), i++;
+			lst_add_elem_back(&lst, lst_create_elem(ft_atoi(av[i]))), i++;
 	}
 	return (lst);
 
@@ -47,5 +46,7 @@ t_all	*init_all(int ac, char **av)
 	all->median = find_median(all->already_sort, ((ac - 1) / 2));
 	all->nb_arg = ac - 1;
 	all->ope = 0;
+	all->it_to_b = 0;
+	all->it_to_a = 0;
 	return (all);
 }
