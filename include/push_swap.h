@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 21:37:02 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/13 06:30:43 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_all		*init_all(int ac, char **av);
 t_val		*lst_create_elem(int nb);
 void		lst_add_elem_back(t_val **lst, t_val *new);
 void		lst_add_elem_front(t_val **lst, t_val *new);
-void		lst_del_elem(t_val **a);
+void		lst_del_elem(t_val **pile);
 int			len_lst(t_val *lst);
 /*
 *** display.c
@@ -55,9 +55,9 @@ void		display_formatting(t_val *pile);
 /*
 *** sort.c
 */
-int			is_sort(t_val *a, size_t nb_arg);
-void		mini_sort(t_all *all, int size);
-void		check_stack_swap(t_all *all, t_val *a, t_val *b);
+int			is_sort(t_val *pile, int tri);
+void		mini_sort(t_all *all);
+int			check_stack_swap(t_all *all, t_val *a, t_val *b);
 int			check_stack_push(t_all *all, t_val *a, t_val *b);
 int			check_stack_rotate(t_all *all, t_val *a, t_val *b);
 void		lulu_sort(t_all *all);
@@ -72,22 +72,22 @@ t_val		*goto_last(t_val *pile);
 /*
 *** r_op.c
 */
-void		rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
-void		rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
-void		ra(t_all *all, t_val *a, t_val *last_a);
-void		rb(t_all *all, t_val *b, t_val *last_b);
+int			rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
+int			rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
+int			ra(t_all *all, t_val *a, t_val *last_a);
+int			rb(t_all *all, t_val *b, t_val *last_b);
 /*
 *** r_op.c
 */
-void		pb(t_all *all, t_val *elem);
-void		pa(t_all *all, t_val *elem);
+int			pb(t_all *all, t_val *elem);
+int			pa(t_all *all, t_val *elem);
 int			need2swap_or_rotate(t_all *all, t_val *last_elem);
 /*
 *** s_op.c
 */
-void		sa(t_all *all, t_val *a);
-void		sb(t_all *all, t_val *b);
-void		ss(t_all *all, t_val *a, t_val *b);
+int			sa(t_all *all, t_val *a);
+int			sb(t_all *all, t_val *b);
+int			ss(t_all *all, t_val *a, t_val *b);
 /*
 *** error.c
 */

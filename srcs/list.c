@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 04:43:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/13 05:57:29 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,30 @@ int		len_lst(t_val *lst)
 
 void	lst_del_elem(t_val **pile)
 {
-	t_val	*tmp;
+	t_val	*next;
+	t_val	*curr;
 
-	tmp = *pile;
-	if (tmp && tmp->prev == NULL)
+	next = NULL;
+	curr = *pile;
+	if (curr && curr->next)
 	{
-		(*pile) = tmp->next;
-		(*pile)->prev = NULL;
-		(*pile)->next = tmp->next->next;
-		free(tmp);
+		next = curr->next;
+		next->prev = NULL;
+		free(curr);
+		curr = NULL;
 	}
+	*pile = next;
+	// printf("[del]current->val: %d\n", (*pile)->val);
+	// printf("[del]pile->next->val: %d\n", (*pile)->next->val);
+	// if (*pile)
+	// {
+	// 	next = (*pile)->next;
+	// 	free(*pile);
+	// 	*pile = NULL;
+	// 	printf("[del]next->val: %d\n", next->val);
+	// 	printf("[del]pile->val: %d\n", (*pile)->val);
+	// 	if ((*pile)->prev->val)
+	// 		printf("[del]pile->prev->val: %d\n", (*pile)->prev->val);
+	// }
+	// *pile = next;
 }

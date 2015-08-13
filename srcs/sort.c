@@ -6,99 +6,144 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/12 21:41:19 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/13 06:48:50 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		is_sort(t_val *a, size_t nb_arg)
+int		is_sort(t_val *pile, int tri)
 {
-	size_t	ct;
 	t_val	*tmp;
 
-	ct = 0;
-	tmp = a;
-	while (tmp && tmp->next)
+	tmp = pile;
+	if (tri == 'a')
 	{
-		if (tmp->val < tmp->next->val)
+		while (tmp && tmp->next)
 		{
-			ct++;
+			if (tmp->val < tmp->next->val)
+				tmp = tmp->next;
+			else
+				return (0);
 		}
-		tmp = tmp->next;
 	}
-	if (ct == nb_arg)
-		return (1);
-	return (0);
+	if (tri == 'b')
+	{
+		while (tmp && tmp->next)
+		{
+			if (tmp->val > tmp->next->val)
+				tmp = tmp->next;
+			else
+				return (0);
+		}
+	}
+	// printf("%d && %d\n", ct, nb_arg);
+	return (1);
 }
 
-void	mini_sort(t_all *all, int size)
+void	mini_sort(t_all *all)
 {
-	t_val			*tmp;
-	static int		ct = 0;
+	static int		stop = 0;
 
-	tmp = all->a;
-	if (tmp == NULL)
+	//printf("stop: %d\n", stop);
+	// while (tmp)
+	// {
+	// 	printf("val: %d\n", tmp->val);
+	// 	lst_del_elem(tmp);
+	// 	tmp = tmp->next;
+	// }
+	// return ;
+	// while (stop < (int)all->nb_arg || all->a != NULL)
+	// {
+	// 	stop += pb(all, lst_create_elem(all->a->val));
+	// }
+	//return ;
+	if (is_sort(all->a, 'a') && len_lst(all->b) <= 2)
+	{
+		if (len_lst(all->b) == 1)
+			pa(all, lst_create_elem(all->b->val));
+		else
+		{
+			if (is_sort(all->b, 'b'))
+			{
+				while (all->b)
+					pa(all, lst_create_elem(all->b->val)), all->b = all->b->next;
+			}
+			else
+				mini_sort(all);
+		}
 		return ;
-	if (ct == size)
+	}
+	if (stop == 700000)
+		return ;
+	//write(1, "segfault\n", 9);
+	if (check_stack_swap(all, all->a, all->b) == 0)
 	{
-		// if (is_sort(all->a, all->nb_arg) == 1)
-		// {
-			return ;
-		//}
-		// else
-		// {
-		// 	size = size + 5;
-		// 	mini_sort(all, size);
-		// }
+		if (check_stack_push(all, all->a, all->b) == 1)
+			stop++;
 	}
 	else
 	{
-		check_stack_swap(all, all->a, all->b);
-		if (check_stack_rotate(all, all->a, all->b))
-		{
-			ct++;
-			mini_sort(all, size);;
-		}
-		else if (check_stack_push(all, all->a, all->b))
-		{
-			ct++;
-			mini_sort(all, size);
-		}
-		else
-		{
-			printf("NO ope\n");
-			return ;
-		}
+		stop++;
+		//write(1, "segfault\n", 9);
 	}
+	mini_sort(all);
 }
 
-void	check_stack_swap(t_all *all, t_val *a, t_val *b)
+int		check_stack_swap(t_all *all, t_val *a, t_val *b)
 {
-	if ((a->val > a->next->val && a->val < goto_last(a)->val)
-		&& (b->val < b->next->val && b->val > goto_last(b)->val))
-		ss(all, a, b);
-	else
+	if (len_lst(a) > 1 && len_lst(b) > 1)
 	{
-		if (len_lst(b) > 1)
+		if ((a->val > a->next->val && b->val < b->next->val))
+			return (ss(all, a, b));
+	}
+	if (len_lst(b) > 1)
+	{
+		//write(1, "yolo0\n", 6);
+		if (b->val < b->next->val)
 		{
-			if (a->val > a->next->val && a->val < goto_last(a)->val)
-				sa(all, a);
-			if (b->val < b->next->val && b->val > goto_last(b)->val)
-				sb(all, b);
+			if (b->val < goto_last(b)->val)
+				return (rb(all, b, goto_last(b)));
+			else
+				return (sb(all, b));
 		}
 		else
-			return ;
+		{
+			if (b->val < goto_last(b)->val)
+				return (rb(all, b, goto_last(b)));
+		}
 	}
+	if (a->val > a->next->val)
+	{
+	//	write(1, "yolo1\n", 6);
+		if (a->val > goto_last(a)->val)
+			return (ra(all, a, goto_last(a)));
+		else
+		{
+		//	write(1, "segfault\n", 9);
+			return (sa(all, a));
+		}
+	}
+	else
+	{
+	//	write(1, "yolo2\n", 6);
+		if (a->val > goto_last(a)->val)
+			return (ra(all, a, goto_last(a)));
+	}
+	return (0);
 }
 
 int		check_stack_push(t_all *all, t_val *a, t_val *b)
 {
-	if ((a->val < a->next->val && b == NULL)
-		|| (a->val < a->next->val && a->val > b->val))
+	if (b && b->next && is_sort(all->a, 'a'))
 	{
-		pb(all, lst_create_elem(a->val));
-		return (1);
+		if (b->val > b->next->val && b->val < a->val)
+			return (pa(all, lst_create_elem(b->val)));
+	}
+	if (a && a->next)
+	{
+		if (a->val < a->next->val)
+			return (pb(all, lst_create_elem(a->val)));
 	}
 	return (0);
 }
@@ -108,31 +153,19 @@ int		check_stack_rotate(t_all *all, t_val *a, t_val *b)
 	if (a && b)
 	{
 		if (a->val > goto_last(a)->val && b->val < goto_last(b)->val)
-		{
-			rr(all, a, goto_last(a), b, goto_last(b));
-			return (1);
-		}
-		if (a->val < goto_last(a)->val && b->val > goto_last(b)->val)
-		{
-			rrr(all, a, goto_last(a), b, goto_last(b));
-			return (1);
-		}
-	}
-	if (a)
-	{
-		if (a->val > goto_last(a)->val && b->val > goto_last(b)->val)
-		{
-			ra(all, a, goto_last(a));
-			return (1);
-		}
-	}
-	if (b)
-	{
+			return (rr(all, a, goto_last(a), b, goto_last(b)));
 		if (a->val < goto_last(a)->val && b->val < goto_last(b)->val)
-		{
-			rb(all, b, goto_last(b));
-			return (1);
-		}
+			return (rrr(all, a, goto_last(a), b, goto_last(b)));
+	}
+	else if (a)
+	{
+		if (a->val > goto_last(a)->val)
+			return (ra(all, a, goto_last(a)));
+	}
+	else if (b)
+	{
+		if (b->val < goto_last(b)->val)
+			return (rb(all, b, goto_last(b)));
 	}
 	return (0);
 }
