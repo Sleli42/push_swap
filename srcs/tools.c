@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/14 01:23:58 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/15 01:41:10 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	choose_sort(t_all *all)
 {
-	if (all->nb_arg > 1 && all->nb_arg <= 6)
+	if (all->nb_arg > 1 && all->nb_arg <= 8)
 		mini_sort(all);
+	else
+		lulu_sort(all);
 	display_pile(all);
 	printf("nb ope: %d\n", all->ope);
 }

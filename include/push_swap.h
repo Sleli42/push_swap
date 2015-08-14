@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/14 01:25:30 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/15 01:45:37 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef	struct	s_all
 	int			ope;
 }				t_all;
 
+void	test(t_all *all);
+
 /*
 *** init.c
 */
@@ -59,8 +61,9 @@ void		display_formatting(t_val *pile);
 */
 int			is_sort(t_val *pile, int tri);
 void		mini_sort(t_all *all);
-int			check_stack_swap_or_rot(t_all *all, t_val *a, t_val *b);
-int			check_stack_push(t_all *all, t_val *a, t_val *b);
+int		check_stack_swap(t_all *all, t_val *a, t_val *b);
+void		check_stack_push(t_all *all, t_val *a, t_val *b);
+int		check_stack_rot(t_all *all, t_val *a, t_val *b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*

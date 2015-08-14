@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/14 01:28:43 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/15 01:49:09 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,79 +42,101 @@ int		is_sort(t_val *pile, int tri)
 
 void	mini_sort(t_all *all)
 {
-	if (is_sort(all->a, 'a'))
+	if (is_sort(all->a, 'a') == 1)
 	{
-		if ((all->b == NULL && all->it_to_b > 1)
-			|| (all->it_to_a == 0 && all->it_to_b == 0))
-		{
-			write(1, "\n", 1);
+		if (len_lst(all->a) == (int)all->nb_arg)
 			return ;
+		else
+		{
+			if (is_sort(all->b, 'b') == 1 && all->b->val < all->a->val)
+			{
+				while (all->b != NULL)
+					pa(all, lst_create_elem(all->b->val));
+				return ;
+			}
 		}
-		if (all->b)
-			pa(all, lst_create_elem(all->b->val));
 	}
-	else if (check_stack_swap_or_rot(all, all->a, all->b) == 0)
-		if (check_stack_push(all, all->a, all->b) == 1)
-			;
+	if (check_stack_swap(all, all->a, all->b) == 1
+		|| check_stack_rot(all, all->a, all->b) == 1)
+		mini_sort(all);
+	check_stack_push(all, all->a, all->b);
 	mini_sort(all);
 }
 
-int		check_stack_swap_or_rot(t_all *all, t_val *a, t_val *b)
+int	check_stack_rot(t_all *all, t_val *a, t_val *b)
+{
+	if (len_lst(a) > 1 && len_lst(b) > 1)
+		if (a->val > goto_last(a)->val && b->val < goto_last(b)->val)
+			return (rr(all, a, goto_last(a), b, goto_last(b)));
+	if (len_lst(b) > 1)
+		if (b->val < goto_last(b)->val)
+			return (rb(all, b, goto_last(b)));
+	if (len_lst(a) > 1)
+		if (a->val > goto_last(a)->val)
+			return (ra(all, a, goto_last(a)));
+	return (0);
+}
+
+int	check_stack_swap(t_all *all, t_val *a, t_val *b)
 {
 	if (len_lst(a) > 1 && len_lst(b) > 1)
 		if ((a->val > a->next->val && b->val < b->next->val))
 			return (ss(all, a, b));
 	if (len_lst(b) > 1)
-	{
 		if (b->val < b->next->val)
 		{
 			if (b->val < goto_last(b)->val)
-				return (rb(all, b, goto_last(b)));
-			else
-				return (sb(all, b));
+				return (0);
+			return (sb(all, b));
 		}
-		else
-			if (b->val < goto_last(b)->val)
-				return (rb(all, b, goto_last(b)));
-	}
-	if (a->val > a->next->val)
-	{
-		if (a->val > goto_last(a)->val)
-			return (ra(all, a, goto_last(a)));
-		else
+	if (len_lst(a) > 1)
+		if (a->val > a->next->val)
+		{
+			if (a->val > goto_last(a)->val)
+				return (0);
 			return (sa(all, a));
-	}
-	else
-		if (a->val > goto_last(a)->val)
-			return (ra(all, a, goto_last(a)));
+		}
 	return (0);
 }
 
-int		check_stack_push(t_all *all, t_val *a, t_val *b)
+void	check_stack_push(t_all *all, t_val *a, t_val *b)
 {
-	if (all->it_to_b > (int)(all->nb_arg))
-		if ((b->val > b->next->val && b->val < a->val))
-			return (pa(all, lst_create_elem(b->val)));
-	if (a && a->next)
+	if (b && all->it_to_b > 2)
 	{
-		if (b)
-			if (a->val < a->next->val && a->val > b->val)
-				return (pb(all, lst_create_elem(a->val)));
-		if (a->val < a->next->val)
-			return (pb(all, lst_create_elem(a->val)));
+		if (b->val > b->next->val && b->val < a->val)
+		{
+			display_pile(all);
+			pa(all, lst_create_elem(b->val));
+		}
 	}
-	return (0);
+	if (a)
+	{
+		if (a->val < a->next->val && all->it_to_b <= 2)
+			pb(all, lst_create_elem(a->val));
+		else if (a->val < a->next->val && a->val < b->val)
+			pb(all, lst_create_elem(a->val));
+	}
 }
 
 void	lulu_sort(t_all *all)
 {
+	int		ct;
 	t_val	*tmp;
 
+	ct = 0;
 	tmp = all->a;
 	if (tmp)
 	{
-
+		//printf("median : %d\n", all->median);
+		while (ct < ((int)all->nb_arg / 2))
+		{
+			//printf("tmp->val: %d\n", tmp->val);
+			pb(all, lst_create_elem(tmp->val));
+			tmp = tmp->next;
+			ct++;
+		}
 	}
+	mini_sort(all);
 }
 
 
