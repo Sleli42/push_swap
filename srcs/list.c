@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 00:38:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/15 19:34:04 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ void	lst_del_elem(t_val **pile)
 
 	next = NULL;
 	curr = *pile;
-	if (len_lst(curr) <= 1)
+	if (len_lst(*pile) <= 1)
 	{
-		free(curr);
+		free(*pile);
 		*pile = NULL;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 01:45:37 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/15 19:35:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef	struct	s_all
 }				t_all;
 
 void	test(t_all *all);
+int		check_double(t_all *all, t_val *a, t_val *b);
+void	check_a(t_all *all, t_val *a);
+void	check_b(t_all *all, t_val *b);
+void	check_push(t_all *all, t_val *a, t_val *b);
+
+void	test2(t_all *all);
 
 /*
 *** init.c
