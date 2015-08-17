@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 01:41:10 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 02:50:28 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 void	choose_sort(t_all *all)
 {
 	if (all->nb_arg > 1 && all->nb_arg <= 8)
@@ -21,7 +21,7 @@ void	choose_sort(t_all *all)
 	display_pile(all);
 	printf("nb ope: %d\n", all->ope);
 }
-
+*/
 void	swap_elem(t_val **a, t_val **b)
 {
 	int		tmp;

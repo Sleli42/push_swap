@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 19:34:04 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 04:06:37 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ void	lst_add_elem_back(t_val **lst, t_val *new)
 
 void	lst_add_elem_front(t_val **lst, t_val *new)
 {
-	t_val	*tmp;
-
-	tmp = *lst;
 	if (new != NULL)
 	{
 		if (*lst == NULL)
@@ -86,21 +83,26 @@ int		len_lst(t_val *lst)
 void	lst_del_elem(t_val **pile)
 {
 	t_val	*next;
-	t_val	*curr;
+	t_val	*prev;
+	t_val	*del;
 
-	next = NULL;
-	curr = *pile;
-	if (len_lst(*pile) <= 1)
+	next = (*pile)->next;
+	prev = (*pile)->prev;
+	del = *pile;
+	if (!prev && next)
 	{
-		free(*pile);
-		*pile = NULL;
+		*pile = del->next;
+		(*pile)->prev = NULL;
+		free(del);
+		del = NULL;
 	}
-	else
+	else if (prev && !next)
 	{
-		next = curr->next;
-		next->prev = NULL;
-		free(curr);
-		curr = NULL;
-		*pile = next;
+		*pile = (*pile)->prev;
+		(*pile)->next = NULL;
+	}
+	else if (!prev && !next)
+	{
+		*pile = NULL;
 	}
 }

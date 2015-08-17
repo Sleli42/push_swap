@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 19:42:22 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 04:05:50 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,27 @@ int		main(int ac, char **av)
 	{
 		all = init_all(ac, av);
 		check_error(all);
-		while (all->a->val != all->median)
-		{
-			pb(all, lst_create_elem(all->a->val));
-		}
-		test(all);
-		//test2(all);
+		//test(all);
+		test2(all);
 		// display_pile(all);
 		// choose_sort(all);
 	}
 	return (0);
 }
 
+void	test2(t_all *all)
+{
+	display_pile(all);
+	ra(all);
+	display_pile(all);
+	//exit(3);
+	ra(all);
+	display_pile(all);
+	ra(all);
+	display_pile(all);
+	exit(1);
+}
+/*
 int		check_double(t_all *all, t_val *a, t_val *b)
 {
 	if (!a || !b)
@@ -159,21 +168,7 @@ void	test(t_all *all)
 	// pa(all, lst_create_elem(all->b->val));
 	// display_pile(all);
 }
-
-void	test2(t_all *all)
-{
-	display_pile(all);
-	pa(all, lst_create_elem(all->b->val));
-	display_pile(all);
-	pb(all, lst_create_elem(all->a->val));
-	display_pile(all);
-	pa(all, lst_create_elem(all->b->val));
-	display_pile(all);
-	pb(all, lst_create_elem(all->a->val));
-	display_pile(all);
-	exit(1);
-}
-
+*/
 /*
 Pile a:
 	[ 7 ]

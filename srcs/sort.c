@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 01:49:09 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 02:49:21 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 int		is_sort(t_val *pile, int tri)
 {
 	t_val	*tmp;
@@ -157,3 +157,4 @@ void	sort_list(t_val **pile, int nb_elem)
 		tmp = *pile;
 	}
 }
+*/

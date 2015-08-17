@@ -3,47 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   r_op.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/13 06:43:37 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 04:05:07 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b)
+int		rr(t_all *all, t_val *a, t_val *b)
 {
-	swap_elem(&a, &last_a);
-	swap_elem(&b, &last_b);
+	(void)a;
+	(void)b;
 	all->ope++;
 	if (all->nb_arg < 42)
 		ft_putstr("rr ");
 	return (1);
 }
 
-int		rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b)
+int		rrr(t_all *all, t_val *a, t_val *b)
 {
-	swap_elem(&last_a, &a);
-	swap_elem(&last_b, &b);
+	(void)a;
+	(void)b;
 	all->ope++;
 	if (all->nb_arg < 42)
 		ft_putstr("rrr ");
 	return (1);
 }
 
-int		ra(t_all *all, t_val *a, t_val *last_a)
+int		ra(t_all *all)
 {
-	swap_elem(&a, &last_a);
+	lst_add_elem_back(&all->a, lst_create_elem(all->a->val));
+	lst_del_elem(&all->a);
 	all->ope++;
 	if (all->nb_arg < 42)
 		ft_putstr("ra ");
 	return (1);
 }
 
-int		rb(t_all *all, t_val *b, t_val *last_b)
+int		rb(t_all *all)
 {
-	swap_elem(&b, &last_b);
 	all->ope++;
 	if (all->nb_arg < 42)
 		ft_putstr("rb ");

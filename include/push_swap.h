@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 19:35:21 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/17 04:04:58 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef	struct	s_all
 	size_t		nb_arg;
 	int			ope;
 }				t_all;
+
+# define FIRST_A all->a->val
+# define FIRST_B all->b->val
+# define NEXT_A all->a->next->val
+# define NEXT_B all->b->next->val
+# define LAST_A (goto_last(all->a)->val)
+# define LAST_B goto_last(all->b)->val
 
 void	test(t_all *all);
 int		check_double(t_all *all, t_val *a, t_val *b);
@@ -82,10 +89,10 @@ t_val		*goto_last(t_val *pile);
 /*
 *** r_op.c
 */
-int			rr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
-int			rrr(t_all *all, t_val *a, t_val *last_a, t_val *b, t_val *last_b);
-int			ra(t_all *all, t_val *a, t_val *last_a);
-int			rb(t_all *all, t_val *b, t_val *last_b);
+int			rr(t_all *all, t_val *a, t_val *b);
+int			rrr(t_all *all, t_val *a, t_val *b);
+int			ra(t_all *all);
+int			rb(t_all *all);
 /*
 *** r_op.c
 */
