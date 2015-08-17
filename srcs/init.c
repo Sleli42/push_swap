@@ -6,7 +6,7 @@
 /*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 02:50:47 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/17 04:54:00 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ t_all	*init_all(int ac, char **av)
 	all->ope = 0;
 	all->it_to_b = 0;
 	all->it_to_a = 0;
+	all->silent = 0;
 	return (all);
 }

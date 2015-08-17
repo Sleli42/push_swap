@@ -6,7 +6,7 @@
 /*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 04:04:58 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/17 04:53:44 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef	struct	s_all
 	int			median;
 	int			it_to_b;
 	int			it_to_a;
+	int			silent;
 	size_t		nb_arg;
 	int			ope;
 }				t_all;
@@ -74,9 +75,9 @@ void		display_formatting(t_val *pile);
 */
 int			is_sort(t_val *pile, int tri);
 void		mini_sort(t_all *all);
-int		check_stack_swap(t_all *all, t_val *a, t_val *b);
+int			check_stack_swap(t_all *all, t_val *a, t_val *b);
 void		check_stack_push(t_all *all, t_val *a, t_val *b);
-int		check_stack_rot(t_all *all, t_val *a, t_val *b);
+int			check_stack_rot(t_all *all, t_val *a, t_val *b);
 void		lulu_sort(t_all *all);
 void		sort_list(t_val **pile, int nb_elems);
 /*
@@ -89,10 +90,12 @@ t_val		*goto_last(t_val *pile);
 /*
 *** r_op.c
 */
-int			rr(t_all *all, t_val *a, t_val *b);
-int			rrr(t_all *all, t_val *a, t_val *b);
+int			rr(t_all *all);
+int			rrr(t_all *all);
 int			ra(t_all *all);
+int			rra(t_all *all);
 int			rb(t_all *all);
+int			rrb(t_all *all);
 /*
 *** r_op.c
 */

@@ -6,7 +6,7 @@
 /*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 04:06:37 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/17 05:40:54 by sleli42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,18 @@ void	lst_del_elem(t_val **pile)
 	}
 	else if (prev && !next)
 	{
-		*pile = (*pile)->prev;
-		(*pile)->next = NULL;
+		printf("elem: %d\n", (*pile)->val);
+		*pile = del->prev;
+		printf("elemnew: %d\n", (*pile)->val);
+		printf("elemnew next: %d\n", (*pile)->next->val);
+		(*pile)->next = del;
+		free(del);
+		del = NULL;
 	}
 	else if (!prev && !next)
 	{
-		*pile = NULL;
+		printf("problemes\n");
+		free(del);
+		del = NULL;
 	}
 }
