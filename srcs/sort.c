@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 02:49:21 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/18 03:55:46 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#define FIRST_A (all->a->head->data)
+#define FIRST_B (all->b->head->data)
+#define NEXT_A (all->a->head->next->data)
+#define NEXT_B (all->b->head->next->data)
+#define LAST_A (all->a->tail->data)
+#define LAST_B (all->b->tail->data)
+
+
+void	try_sort(t_all *all)
+{
+
+}
+
+
+
+
+
+
+
+
+
+
 /*
 int		is_sort(t_val *pile, int tri)
 {

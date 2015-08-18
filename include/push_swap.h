@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:45:41 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/18 03:53:33 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,31 @@ typedef	struct	s_all
 	int			ope;
 }				t_all;
 
-
-void	test(t_all *all);
-
 void	test2(t_all *all);
 
 /*
 *** init.c
 */
-void		init_stack(t_dlist *lst, int ac, char **av);
-t_all		*init_all(int ac, char **av);
+void			init_stack(t_dlist *lst, int ac, char **av);
+t_all			*init_all(int ac, char **av);
 /*
 *** list.c
 */
-t_dlist		*create_dlst(void);
-t_node		*dlst_new(int data);
-t_dlist		*dlst_add_back(t_dlist *lst, t_node *node);
-t_dlist		*dlst_add_front(t_dlist *lst, t_node *node);
-t_dlist		*dlst_del_one(t_dlist *lst, int data2del);
+t_dlist			*create_dlst(void);
+t_node			*dlst_new(int data);
+t_dlist			*dlst_add_back(t_dlist *lst, t_node *node);
+t_dlist			*dlst_add_front(t_dlist *lst, t_node *node);
+t_dlist			*dlst_del_one(t_dlist *lst, int data2del);
 
 /*
 *** display.c
 */
-void		display_pile(t_all *all);
-void		display_formatting(t_dlist *pile);
+void			display_pile(t_all *all);
+void			display_formatting(t_dlist *pile);
 /*
 *** sort.c
 */
+void			try_sort(t_all *all);
 // int			is_sort(t_val *pile, int tri);
 // void		mini_sort(t_all *all);
 // int			check_stack_swap(t_all *all, t_val *a, t_val *b);
@@ -104,9 +102,9 @@ void			ss(t_all *all);
 /*
 *** error.c
 */
-void		error(char *err);
-void		check_error(t_all *all);
-void		check_sort_params(t_node *pile, size_t lenght);
-void		check_doublons(t_node *pile, int val);
+void			error(char *err);
+void			check_error(t_all *all);
+void			check_sort_params(t_node *pile, size_t lenght);
+void			check_doublons(t_node *pile, int val);
 
 #endif
