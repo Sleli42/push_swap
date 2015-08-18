@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 02:50:28 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/18 03:45:44 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,18 @@ void	choose_sort(t_all *all)
 	printf("nb ope: %d\n", all->ope);
 }
 */
-void	swap_elem(t_val **a, t_val **b)
+void	swap_elem(t_node **first, t_node **next)
 {
 	int		tmp;
 
-	tmp = (*a)->val;
-	(*a)->val = (*b)->val;
-	(*b)->val = tmp;
+	tmp = (*first)->data;
+	(*first)->data = (*next)->data;
+	(*next)->data = tmp;
 }
 
-int		find_median(t_val *sorted, int val2stop)
-{
-	while (val2stop-- > 0)
-		sorted = sorted->next;
-	return (sorted->val);
-}
-
-t_val	*goto_last(t_val *pile)
-{
-	t_val	*tmp;
-
-	tmp = pile;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp);
-}
+// int		find_median(t_val *sorted, int val2stop)
+// {
+// 	while (val2stop-- > 0)
+// 		sorted = sorted->next;
+// 	return (sorted->val);
+// }

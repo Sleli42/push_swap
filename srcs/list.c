@@ -3,113 +3,119 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 05:40:54 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/18 03:34:27 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_val	*lst_create_elem(int nb)
+t_dlist		*create_dlst(void)
 {
-	t_val	*elem;
+	t_dlist	*new;
 
-	if (!(elem = (t_val*)malloc(sizeof(t_val))))
-		return (NULL);
-	elem->val = nb;
-	elem->next = NULL;
-	elem->prev = NULL;
-	return (elem);
-}
-
-void	lst_add_elem_back(t_val **lst, t_val *new)
-{
-	t_val	*tmp;
-
-	tmp = *lst;
+	new = (t_dlist*)malloc(sizeof(t_dlist));
 	if (new != NULL)
 	{
-		if (*lst == NULL)
-			*lst = new;
-		else
+		new->lenght = 0;
+		new->head = NULL;
+		new->tail = NULL;
+	}
+	return (new);
+}
+
+t_dlist		*dlst_del_one(t_dlist *lst, int data2del)
+{
+	t_node	*tmp;
+	int		found;
+
+	tmp = lst->head;
+	found = 0;
+	if (lst)
+	{
+		while (tmp && !found)
 		{
-			while (tmp->next)
+			if (tmp->data == data2del)
+			{
+				if (!tmp->next && tmp->prev)
+				{
+					lst->tail = tmp->prev;
+					lst->tail->next = NULL;
+				}
+				else if (!tmp->prev && tmp->next)
+				{
+					lst->head = tmp->next;
+					lst->head->prev = NULL;
+				}
+				else if (!tmp->next && !tmp->prev)
+				{
+					free(lst);
+					lst = create_dlst();
+					return (lst);
+				}
+				free(tmp);
+				lst->lenght--;
+				found = 1;
+			}
+			else
 				tmp = tmp->next;
-			tmp->next = new;
-			new->prev = tmp;
 		}
 	}
-	else
-		return ;
+	return (lst);
 }
 
-void	lst_add_elem_front(t_val **lst, t_val *new)
+t_node		*dlst_new(int data)
 {
-	if (new != NULL)
+	t_node	*new;
+
+	new = (t_node *)malloc(sizeof(t_node));
+	if (new)
 	{
-		if (*lst == NULL)
-			*lst = new;
+		new->data = data;
+		new->next = NULL;
+		new->prev = NULL;
+	}
+	return (new);
+}
+
+t_dlist		*dlst_add_back(t_dlist *lst, t_node *node)
+{
+	if (lst && node)
+	{
+		if (lst->tail == NULL)
+		{
+			lst->head = node;
+			lst->tail = node;
+		}
 		else
 		{
-			new->prev = NULL;
-			new->next = (*lst);
-			*lst = new;
+			lst->tail->next = node;
+			node->prev = lst->tail;
+			lst->tail = node;
 		}
+		lst->lenght++;
 	}
-	else
-		return ;
+	return (lst);
 }
 
-int		len_lst(t_val *lst)
+t_dlist		*dlst_add_front(t_dlist *lst, t_node *node)
 {
-	t_val	*tmp;
-	int		ret;
-
-	tmp = lst;
-	ret = 0;
-	if (tmp)
+	if (lst && node)
 	{
-		while (tmp)
+		if (lst->tail == NULL)
 		{
-			tmp = tmp->next;
-			ret++;
+			lst->head = node;
+			lst->tail = node;
 		}
+		else
+		{
+			lst->head->prev = node;
+			node->next = lst->head;
+			lst->head = node;
+		}
+		lst->lenght++;
 	}
-	return (ret);
-}
-
-void	lst_del_elem(t_val **pile)
-{
-	t_val	*next;
-	t_val	*prev;
-	t_val	*del;
-
-	next = (*pile)->next;
-	prev = (*pile)->prev;
-	del = *pile;
-	if (!prev && next)
-	{
-		*pile = del->next;
-		(*pile)->prev = NULL;
-		free(del);
-		del = NULL;
-	}
-	else if (prev && !next)
-	{
-		printf("elem: %d\n", (*pile)->val);
-		*pile = del->prev;
-		printf("elemnew: %d\n", (*pile)->val);
-		printf("elemnew next: %d\n", (*pile)->next->val);
-		(*pile)->next = del;
-		free(del);
-		del = NULL;
-	}
-	else if (!prev && !next)
-	{
-		printf("problemes\n");
-		free(del);
-		del = NULL;
-	}
+	return (lst);
 }

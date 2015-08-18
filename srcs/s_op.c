@@ -6,36 +6,30 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/13 22:00:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/18 03:45:43 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		sa(t_all *all, t_val *pile)
+void		sa(t_all *all)
 {
-	swap_elem(&pile, &pile->next);
+	swap_elem(&all->a->head, &all->a->head->next);
 	if (all->nb_arg < 42)
 		ft_putstr("sa ");
 	all->ope++;
-	return (1);
 }
 
-int		sb(t_all *all, t_val *pile)
+void		sb(t_all *all)
 {
-	swap_elem(&pile, &pile->next);
 	if (all->nb_arg < 42)
 		ft_putstr("sb ");
 	all->ope++;
-	return (1);
 }
 
-int		ss(t_all *all, t_val *a, t_val *b)
+void		ss(t_all *all)
 {
-	swap_elem(&a, &a->next);
-	swap_elem(&b, &b->next);
 	if (all->nb_arg < 42)
 		ft_putstr("ss ");
 	all->ope++;
-	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleli42 <sleli42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/17 05:31:26 by sleli42          ###   ########.fr       */
+/*   Updated: 2015/08/18 03:46:46 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,19 @@ int		main(int ac, char **av)
 
 void	test2(t_all *all)
 {
+ 	size_t 	i = 0;
+
 	display_pile(all);
-	//pb(all, lst_create_elem(all->a->val));
-	//pb(all, lst_create_elem(all->a->val));
-	//pb(all, lst_create_elem(all->a->val));
-	rra(all);
+	sa(all);
+	while (i++ < 3)
+	{
+		pb(all);
+		display_pile(all);
+	}
+	rr(all);
 	display_pile(all);
-	rra(all);
-	display_pile(all);
-	//ra(all);
-	//ra(all);
-	//ra(all);
-	//rra(all); 
-	//rra(all);
-	rra(all);
-	display_pile(all);
-//	rra(all);
-	rra(all);
-	//exit(3);
-	//rrr(all);
-	//rrr(all);
-	display_pile(all);
-	rra(all);
-	display_pile(all);
-	rra(all);
-	display_pile(all);
-	exit(1);
-	ra(all);
-	rb(all);
-	display_pile(all);
-	exit(1);
 }
+
 /*
 int		check_double(t_all *all, t_val *a, t_val *b)
 {

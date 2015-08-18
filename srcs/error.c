@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/06 00:13:12 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/11 04:48:38 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/18 01:24:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,42 @@ void	error(char *err)
 
 void	check_error(t_all *all)
 {
-	t_val	*tmp;
-	int		i;
+	t_node	*tmp;
+	size_t	i;
 
-	tmp = all->a;
+	tmp = all->a->head;
 	i = 0;
 	if (tmp)
 	{
-		check_sort_params(tmp, all->nb_arg);
-		while (i < (int)all->nb_arg)
+		check_sort_params(tmp, all->a->lenght);
+		while (i < all->a->lenght)
 		{
-			check_doublons(all->a, tmp->val);
+			check_doublons(all->a->head, tmp->data);
 			i++;
 			tmp = tmp->next;
 		}
 	}
 }
 
-void	check_sort_params(t_val *pile, int nb_arg)
+void	check_sort_params(t_node *pile, size_t lenght)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
 	if (pile)
 	{
 		while (pile->next)
 		{
-			if (pile->val < pile->next->val)
+			if (pile->data < pile->next->data)
 				i++;
-			if (i == (nb_arg - 1) && pile->val < pile->next->val)
+			if (i == (lenght - 1) && pile->data < pile->next->data)
 				error("SORT ON");
 			pile = pile->next;
 		}
 	}
 }
 
-void	check_doublons(t_val *pile, int val)
+void	check_doublons(t_node *pile, int val)
 {
 	int		ret;
 
@@ -70,7 +70,7 @@ void	check_doublons(t_val *pile, int val)
 	{
 		while (pile)
 		{
-			if (pile->val == val)
+			if (pile->data == val)
 				ret++;
 			pile = pile->next;
 		}

@@ -6,34 +6,37 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/15 19:33:41 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/18 03:37:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-int		pb(t_all *all, t_val *elem)
+void		pb(t_all *all)
 {
-	lst_add_elem_front(&all->b, elem);
-	// printf("elemcreate: %d\n", all->b->val);
-	// printf("val2del: %d\n", all->a->val);
-	// printf("first val: %d\n", all->a->val);
-	lst_del_elem(&all->a);
+	int		tmp;
+
+	if (!all->a)
+		return ;
+	tmp = all->a->head->data;
+	all->a = dlst_del_one(all->a, all->a->head->data);
+	all->b = dlst_add_front(all->b, dlst_new(tmp));
 	all->ope++;
-	all->it_to_b++;
 	if (all->nb_arg < 42)
 		ft_putstr("pb ");
-	return (1);
 }
 
-int		pa(t_all *all, t_val *elem)
+void		pa(t_all *all)
 {
-	lst_add_elem_front(&all->a, elem);
-	lst_del_elem(&all->b);
+	int		tmp;
+
+	if (!all->b)
+		return ;
+	tmp = all->b->head->data;
+	all->b = dlst_del_one(all->b, all->b->head->data);
+	all->a = dlst_add_front(all->a, dlst_new(tmp));
 	all->ope++;
-	all->it_to_a++;
 	if (all->nb_arg < 42)
 		ft_putstr("pa ");
-	return (1);
 }
