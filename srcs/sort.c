@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/22 05:48:44 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 01:34:28 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,157 @@
 #define B (all->b->head)
 #define LAST_A (all->a->tail)
 #define LAST_B (all->b->tail)
+
+
+int		a_is_sort(t_node *a)
+{
+	t_node	*tmp;
+
+	tmp = a;
+	if (tmp)
+	{
+		while (tmp && tmp->next)
+		{
+			if (tmp->data < tmp->next->data)
+				;
+			else
+				return (0);
+			tmp = tmp->next;
+		}
+	}
+	return (1);
+}
+
+int		b_is_sort(t_node *b)
+{
+	t_node	*tmp;
+
+	tmp = b;
+	if (tmp)
+	{
+		while (tmp && tmp->next)
+		{
+			if (tmp->data > tmp->next->data)
+				;
+			else
+				return (0);
+			tmp = tmp->next;
+		}
+	}
+	return (1);
+}
+
+void	try_bop(t_all *all)
+{
+	write(1, "\n", 1);
+	printf("head: %d\n", B->data);
+	printf("head->next: %d\n", B->next->data);
+	printf("last: %d\n", LAST_B->data);
+	printf("last->prev: %d\n", LAST_B->prev->data);
+	exit(1);
+}
+
+void	pa_all(t_all *all)
+{
+	while (B)
+	{
+		if (B->data > A->data)
+		{
+			pa(all);
+			if (A->data > A->next->data && A->data < A->next->next->data)
+				sa(all);
+			try_sort(all);
+		}
+		else
+			pa(all);
+	}
+}
+
+void	try_sort(t_all *all)
+{
+	static int	i = 0;
+	int			tmp = all->ope;
+	if (a_is_sort(A) && all->a->lenght == all->nb_arg)
+		return ;
+	check_stack_a(all);
+	if (all->b->lenght >= 2)
+	{
+		check_stack_b(all);
+		if (a_is_sort(A) && b_is_sort(B))
+			pa_all(all);
+	}
+	if (tmp == all->ope)
+	{
+		pa(all);
+		try_sort(all);
+		// display_pile(all);
+		// printf("NO OP\n"), exit(1);
+	}
+//	display_pile(all);
+	i++;
+	if (i == 1200)
+		return ;
+	try_sort(all);
+}
+
+void	check_stack_b(t_all *all)
+{
+	if (all->b->lenght == 2 && B->data < B->next->data)
+			sb(all);
+	else if (B->data < B->next->data)
+	{
+		if (B->data > LAST_B->data)
+			sb(all);
+		else if (B->data < LAST_B->data)
+			rb(all);
+	}
+	else
+	{
+		if (!A || A->data < B->data)
+			pa(all);
+	}
+}
+
+void	check_stack_a(t_all *all)
+{
+	if (all->a->lenght == 2 && A->data > A->next->data)
+		sa(all);
+	else if (A->data > A->next->data)
+	{
+		if (A->data < LAST_A->data)
+			sa(all);
+		else if (A->data > LAST_A->data)
+		{
+			if (A->data > LAST_A->prev->data)
+				ra(all);
+			else
+				rra(all);
+		}
+		else
+			sa(all);
+	}
+	else if (A->data < A->next->data)
+	{
+		if (A->data < LAST_A->data && )
+		if (A->data > LAST_A->data)
+		{
+			if (LAST_A->data < LAST_A->prev->data)
+				rra(all);
+			else
+				ra(all);
+		}
+	}
+	else
+	{
+		if (!B || A->data > B->data)
+			pb(all);
+	}
+}
+
+
+
+
+
 
 // void	try_sort(t_all *all)
 // {

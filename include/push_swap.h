@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/22 05:48:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 00:26:01 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,13 @@ void			display_formatting(t_dlist *pile);
 *** sort.c
 */
 // void			check_op(t_all *all);
-// void			try_sort(t_all *all);
-// int				is_sort(t_all *all, char pile);
+void			pa_all(t_all *all);
+void			try_bop(t_all *all);
+void			try_sort(t_all *all);
+int				a_is_sort(t_node *a);
+int				b_is_sort(t_node *b);
+void			check_stack_a(t_all *all);
+void			check_stack_b(t_all *all);
 // void			check_push(t_all *all);
 // void			check_double(t_all *all);
 // void			check_swap_or_rot(t_all *all);
