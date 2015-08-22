@@ -6,7 +6,7 @@
 #    By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/24 00:57:49 by lubaujar          #+#    #+#              #
-#    Updated: 2015/08/18 03:42:03 by lubaujar         ###   ########.fr        #
+#    Updated: 2015/08/22 00:00:23 by lubaujar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ SRC = main.c \
 	r_op.c \
 	p_op.c \
 	tools.c \
-	s_op.c
-	# sort.c \
+	s_op.c \
+	sort.c
 
 OBJ = $(SRC:.c=.o)
 	SRCDIR	= ./srcs/

@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:27:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/22 05:30:51 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void		rrb(t_all *all)
 	all->b = dlst_add_front(all->b, dlst_new(tmp));
 	all->ope++;
 	if (all->nb_arg < 42 && all->silent == 0)
-		ft_putstr("rra ");
+		ft_putstr("rrb ");
 }

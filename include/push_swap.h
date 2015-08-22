@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:53:33 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/22 05:48:32 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ typedef	struct	s_all
 {
 	t_dlist		*a;
 	t_dlist		*b;
+	t_node		*already_sort;
 	int			silent;
+	int			median;
 	size_t		nb_arg;
 	int			ope;
 }				t_all;
@@ -64,8 +66,12 @@ void			display_formatting(t_dlist *pile);
 /*
 *** sort.c
 */
-void			try_sort(t_all *all);
-// int			is_sort(t_val *pile, int tri);
+// void			check_op(t_all *all);
+// void			try_sort(t_all *all);
+// int				is_sort(t_all *all, char pile);
+// void			check_push(t_all *all);
+// void			check_double(t_all *all);
+// void			check_swap_or_rot(t_all *all);
 // void		mini_sort(t_all *all);
 // int			check_stack_swap(t_all *all, t_val *a, t_val *b);
 // void		check_stack_push(t_all *all, t_val *a, t_val *b);
@@ -75,8 +81,12 @@ void			try_sort(t_all *all);
 /*
 *** tools.c
 */
-// void		choose_sort(t_all *all);
+t_node			*sort_list(t_node *lst, int lenght);
+void			display_nodelist(t_node *lst);
 void			swap_elem(t_node **first, t_node **next);
+int				find_median(t_node *sorted, int val2stop);
+// void			choose_sort(t_all *all);
+//void			swap_elem(t_node **first, t_node **next);
 // int			find_median(t_val *sorted, int val2stop);
 // t_val		*goto_last(t_val *pile);
 /*

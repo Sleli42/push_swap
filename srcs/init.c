@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:20:03 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/22 05:24:54 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,37 @@ void	init_stack(t_dlist *lst, int ac, char **av)
 t_all	*init_all(int ac, char **av)
 {
 	t_all	*all;
+	t_dlist	*tmp;
 
 	all = NULL;
 	if (!(all = (t_all *)malloc(sizeof(t_all))))
 		printf("Malloc error (init_all)\n"), exit(0);
 	all->a = create_dlst();
 	all->b = create_dlst();
+	tmp = create_dlst();
 	init_stack(all->a, ac, av);
+	init_stack(tmp, ac, av);
 	all->nb_arg = ac - 1;
+	all->already_sort = sort_list(tmp->head, (int)all->nb_arg);
 	all->ope = 0;
 	all->silent = 0;
+	all->median = find_median(all->already_sort, (int)(all->nb_arg / 2));
 	return (all);
 }
+
+// + ====================== +
+// Pile a:
+// 	[ 0 ]
+// 	[ 91 ]
+// 	[ 356 ]
+// 	[ 896 ]
+// 	[ -42 ]
+// 	[ 3 ]
+// 	[ 211 ]
+// Pile b:
+// 	[ 21 ]
+// 	[ 12 ]
+// 	[ 7 ]
+// 	[ -91 ]
+// 	[ -411 ]
+// + ====================== +

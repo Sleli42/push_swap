@@ -6,25 +6,108 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:55:46 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/22 05:48:44 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define FIRST_A (all->a->head->data)
-#define FIRST_B (all->b->head->data)
-#define NEXT_A (all->a->head->next->data)
-#define NEXT_B (all->b->head->next->data)
-#define LAST_A (all->a->tail->data)
-#define LAST_B (all->b->tail->data)
 
+#define A (all->a->head)
+#define B (all->b->head)
+#define LAST_A (all->a->tail)
+#define LAST_B (all->b->tail)
 
-void	try_sort(t_all *all)
-{
+// void	try_sort(t_all *all)
+// {
+// 	int		tmp;
 
-}
+// 	tmp = (int)all->nb_arg;
+// 	while (tmp-- > 0)
+// 	{
+// 		if (A->data < all->median)
+// 			pb(all);
+// 	}
+// 	display_pile(all);
+// 	check_op(all);
+// 	exit(1);
+// }
 
+// void	check_op(t_all *all)
+// {
+// 	static int	i = 0;
 
+// 	if (i == 10 || all->b->lenght == all->nb_arg)
+// 		return ;
+// 	if (all->a->lenght > 1 && all->b->lenght > 1)
+// 		check_double(all);
+// 	//display_pile(all);
+// 	check_swap_or_rot(all);
+// 	//display_pile(all);
+// 	check_push(all);
+// 	display_pile(all);
+// 	i++;
+// 	check_op(all);
+// 	// check_swap_or_rot(all);
+// }
+
+// void	check_push(t_all *all)
+// {
+// 	if (A->data < A->next->data && A->data > B->data)
+// 		pb(all);
+// 	else if (A->data > A->next->data && A->data > B->data)
+// 		pb(all);
+// 	else if (B->data > B->next->data && B->data < A->data)
+// 		pa(all);
+// 	else if (B->data < B->next->data && B->data < A->data)
+// 		pa(all);
+// }
+
+// void	check_double(t_all *all)
+// {
+// 	int	op;
+
+// 	op = 0;
+// 	if (A->data > A->next->data && B->data < B->next->data
+// 		&& A->data < LAST_A->data && B->data > LAST_B->data)
+// 		ss(all), op++;
+// 	else if (A->data > A->next->data && B->data < B->next->data
+// 		&& A->data > LAST_A->data && B->data < LAST_B->data)
+// 		rr(all), op++;
+// 	else if (A->data < A->next->data && B->data > B->next->data
+// 		&& A->data > LAST_A->data && B->data < LAST_B->data)
+// 		rr(all), op++;
+// 	else if (LAST_A->data < LAST_A->prev->data && LAST_A->data < A->data
+// 		&& LAST_B->data > LAST_B->prev->data && LAST_B->data > B->data)
+// 		rrr(all), op++;
+// 	if (op >= 1)
+// 		check_double(all);
+// }
+
+// void	check_swap_or_rot(t_all *all)
+// {
+// 	int	op = 0;
+
+// 	if (all->a->lenght > 1)
+// 	{
+// 		if (A->data > A->next->data && A->data < LAST_A->data)
+// 			sa(all), op++;
+// 		else if (A->data > LAST_A->data && A->data > A->next->data)
+// 			ra(all), op++;
+// 		else if (LAST_A->data < A->data)
+// 			rra(all), op++;
+// 	}
+// 	if (all->b->lenght > 1)
+// 	{
+// 		if (B->data < B->next->data && B->data > LAST_B->data)
+// 			sb(all), op++;
+// 		else if (B->data < B->next->data && B->data < LAST_B->data)
+// 			rb(all), op++;
+// 		else if (LAST_B->data > B->data)
+// 			rrb(all), op++;
+// 	}
+// 	if (op >= 1)
+// 		check_swap_or_rot(all);
+// }
 
 
 

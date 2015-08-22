@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:51:13 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/22 05:48:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		main(int ac, char **av)
 		check_error(all);
 		try_sort(all);
 		//test(all);
-		//test2(all);
+	//	test2(all);
 		// display_pile(all);
 		// choose_sort(all);
 	}
@@ -32,15 +32,15 @@ int		main(int ac, char **av)
 
 void	test2(t_all *all)
 {
- 	size_t 	i = 0;
+ 	size_t 	i = all->a->lenght + 1;
 
 	display_pile(all);
-	sa(all);
-	while (i++ < 3)
+	//sa(all);
+	while (i--)
 	{
-		pb(all);
+		rra(all);
 		display_pile(all);
 	}
-	rr(all);
-	display_pile(all);
+	//rr(all);
+	//display_pile(all);
 }
