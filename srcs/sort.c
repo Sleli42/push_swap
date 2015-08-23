@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/23 01:34:28 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 08:49:02 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,167 @@
 #define B (all->b->head)
 #define LAST_A (all->a->tail)
 #define LAST_B (all->b->tail)
+#define MIN -1
+#define MAX 1
+
+int		search_value(t_all *all)
+{
+	t_node	*tmp;
+
+	tmp = all->a->head;
+	if (tmp)
+	{
+		while (tmp)
+		{
+			if (tmp->data == all->min)
+			{
+				all->push_min++;
+				all->val2push = MIN;
+				break ;
+			}
+			if (tmp->data == all->max)
+			{
+				all->push_max++;
+				all->val2push = MAX;
+				break ;
+			}
+			tmp = tmp->next;
+		}
+	}
+	return (tmp->data);
+}
+
+int		count_moves(t_node *a, int val2find)
+{
+	t_node	*tmp;
+	int		move;
+
+	tmp = a;
+	move = 0;
+	if (tmp)
+	{
+		while (tmp)
+		{
+			if (tmp->data == val2find)
+				return (move);
+			tmp = tmp->next;
+			move++;
+		}
+	}
+	return (-1);
+}
+
+int		define_nb_moves_in_b(t_node *b, int val2insert)
+{
+	t_node	*tmp;
+	int		move;
+
+	tmp = b;
+	move = 0;
+	if (tmp)
+	{
+		while (tmp)
+		{
+			if (val2insert < b->data)
+				move++;
+			else
+				break ;
+			tmp = tmp->next;
+		}
+	}
+	return (move);
+}
+
+void	push_value(t_all *all)
+{
+	int		move2b;
+	int		tmp;
+
+	move2b = 0;
+	tmp = 0;
+	if (!B)
+		pb(all);
+	else if (B && !B->next)
+	{
+		pb(all);
+		if (B->data < B->next->data)
+			sb(all);
+	}
+	else
+	{
+		if (all->push_min <= 1)
+		{
+			pb(all);
+			rb(all);
+		}
+		else
+		{
+			if (all->val2push == MIN)
+			{
+				while (++tmp < all->push_min)
+					rrb(all);
+				display_pile(all);
+				pb(all);
+				while (tmp-- > 0)
+					rb(all);
+			}
+			// if ((move2b = define_nb_moves_in_b(B, A->data)))
+			// {
+			// 	printf("move2b: %d\n", move2b);
+			// 	if (move2b > (int)(all->b->lenght / 2))
+			// 	{
+			// 		while (tmp++ < move2b)
+			// 			rrb(all);
+			// 		display_pile(all);
+			// 		pb(all);
+			// 		while (tmp-- > 0)
+			// 			rb(all);
+			// 	}
+			// 	else
+			// 	{
+			// 		while (tmp++ < move2b)
+			// 			rb(all);
+			// 		display_pile(all);
+			// 		pb(all);
+			// 		while (tmp-- > 0)
+			// 			rrb(all);
+			// 	}
+			// }
+		}
+	}
+}
+
+void	try_sort(t_all *all)
+{
+	int		nb_moves;
+	int		val2find;
+	static int i = 0;
+
+	display_pile(all);
+	val2find = search_value(all);
+	if ((nb_moves = count_moves(A, val2find)) != -1)
+	{
+		// printf("val2find: %d\n", val2find);
+		// printf("push_min: %d\n", all->push_min);
+		if (nb_moves > (int)(all->a->lenght / 2))
+			while (A->data != val2find)
+				rra(all);
+		else
+			while (A->data != val2find)
+				ra(all);
+	}
+	push_value(all);
+	all->min = find_min_value(A);
+	all->max = find_max_value(A);
+	all->val2push = 0;
+	i++;
+	if (i == 7)
+		return ;
+	try_sort(all);
+}
 
 
+/*
 int		a_is_sort(t_node *a)
 {
 	t_node	*tmp;
@@ -147,7 +306,6 @@ void	check_stack_a(t_all *all)
 	}
 	else if (A->data < A->next->data)
 	{
-		if (A->data < LAST_A->data && )
 		if (A->data > LAST_A->data)
 		{
 			if (LAST_A->data < LAST_A->prev->data)
@@ -164,7 +322,7 @@ void	check_stack_a(t_all *all)
 }
 
 
-
+*/
 
 
 

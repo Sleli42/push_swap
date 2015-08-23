@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/22 05:24:54 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 08:29:04 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,14 @@ t_all	*init_all(int ac, char **av)
 	all->nb_arg = ac - 1;
 	all->already_sort = sort_list(tmp->head, (int)all->nb_arg);
 	all->ope = 0;
-	all->silent = 0;
 	all->median = find_median(all->already_sort, (int)(all->nb_arg / 2));
+	all->min = find_min_value(all->a->head);
+	all->max = find_max_value(all->a->head);
+	all->push_min = 0;
+	all->push_max = 0;
+	all->val2push = 0;
+	all->silent = 0;
+// 	printf("min %d && max: %d\n", all->min, all->max);
 	return (all);
 }
 

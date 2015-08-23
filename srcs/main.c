@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/23 01:11:39 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 08:20:18 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		main(int ac, char **av)
 		all = init_all(ac, av);
 		check_error(all);
 		try_sort(all);
-		display_pile(all);
 		printf("all ops = %d\n", all->ope);
 		//test(all);
 	//	test2(all);
@@ -58,17 +57,4 @@ Pile a:
 Pile b:
 	[ 36 ]
 	[ -42 ]
-+ ====================== +
-pb
-+ ====================== +
-Pile a:
-	[ 91 ]
-	[ 78 ]
-	[ 16 ]
-	[ 121 ]
-Pile b:
-	[ -33 ]
-	[ 36 ]
-	[ -42 ]
-+ ====================== +
 */

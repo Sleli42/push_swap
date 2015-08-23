@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/23 00:26:01 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/23 08:27:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef	struct	s_all
 	t_dlist		*a;
 	t_dlist		*b;
 	t_node		*already_sort;
+	int			min;
+	int			max;
+	int			push_min;
+	int			push_max;
+	int			val2push;
 	int			silent;
 	int			median;
 	size_t		nb_arg;
@@ -66,30 +71,19 @@ void			display_formatting(t_dlist *pile);
 /*
 *** sort.c
 */
-// void			check_op(t_all *all);
-void			pa_all(t_all *all);
-void			try_bop(t_all *all);
+int				define_nb_moves_in_b(t_node *b, int val2insert);
 void			try_sort(t_all *all);
-int				a_is_sort(t_node *a);
-int				b_is_sort(t_node *b);
-void			check_stack_a(t_all *all);
-void			check_stack_b(t_all *all);
-// void			check_push(t_all *all);
-// void			check_double(t_all *all);
-// void			check_swap_or_rot(t_all *all);
-// void		mini_sort(t_all *all);
-// int			check_stack_swap(t_all *all, t_val *a, t_val *b);
-// void		check_stack_push(t_all *all, t_val *a, t_val *b);
-// int			check_stack_rot(t_all *all, t_val *a, t_val *b);
-// void		lulu_sort(t_all *all);
-// void		sort_list(t_val **pile, int nb_elems);
+int				count_moves(t_node *a, int val2find);
+void			push_value(t_all *all);
+int				search_value(t_all *all);
 /*
 *** tools.c
 */
 t_node			*sort_list(t_node *lst, int lenght);
-void			display_nodelist(t_node *lst);
 void			swap_elem(t_node **first, t_node **next);
 int				find_median(t_node *sorted, int val2stop);
+int				find_min_value(t_node *a);
+int				find_max_value(t_node *a);
 // void			choose_sort(t_all *all);
 //void			swap_elem(t_node **first, t_node **next);
 // int			find_median(t_val *sorted, int val2stop);
