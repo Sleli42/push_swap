@@ -6,33 +6,11 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/22 05:30:51 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 02:39:23 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void		rr(t_all *all)
-{
-	all->silent = 1;
-	ra(all);
-	rb(all);
-	all->ope--;
-	if (all->nb_arg < 42 && all->silent == 1)
-		ft_putstr("rr ");
-	all->silent = 0;
-}
-
-void		rrr(t_all *all)
-{
-	all->silent = 1;
-	rra(all);
-	rrb(all);
-	all->ope--;
-	if (all->nb_arg < 42 && all->silent == 1)
-		ft_putstr("rrr ");
-	all->silent = 0;
-}
 
 void		ra(t_all *all)
 {
@@ -43,7 +21,12 @@ void		ra(t_all *all)
 	all->a = dlst_add_back(all->a, dlst_new(tmp));
 	all->ope++;
 	if (all->nb_arg < 42 && all->silent == 0)
-		ft_putstr("ra ");
+	{
+		if (all->opt->c)
+			putcolor("ra");
+		else
+			ft_putstr("ra ");
+	}
 }
 
 void		rra(t_all *all)
@@ -55,7 +38,12 @@ void		rra(t_all *all)
 	all->a = dlst_add_front(all->a, dlst_new(tmp));
 	all->ope++;
 	if (all->nb_arg < 42 && all->silent == 0)
-		ft_putstr("rra ");
+	{
+		if (all->opt->c)
+			putcolor("rra");
+		else
+			ft_putstr("rra ");
+	}
 }
 
 void		rb(t_all *all)
@@ -67,7 +55,12 @@ void		rb(t_all *all)
 	all->b = dlst_add_back(all->b, dlst_new(tmp));
 	all->ope++;
 	if (all->nb_arg < 42 && all->silent == 0)
-		ft_putstr("rb ");
+	{
+		if (all->opt->c)
+			putcolor("rb");
+		else
+			ft_putstr("rb ");
+	}
 }
 
 void		rrb(t_all *all)
@@ -79,5 +72,32 @@ void		rrb(t_all *all)
 	all->b = dlst_add_front(all->b, dlst_new(tmp));
 	all->ope++;
 	if (all->nb_arg < 42 && all->silent == 0)
-		ft_putstr("rrb ");
+	{
+		if (all->opt->c)
+			putcolor("rrb");
+		else
+			ft_putstr("rrb ");
+	}
 }
+
+// void		rr(t_all *all)
+// {
+// 	all->silent = 1;
+// 	ra(all);
+// 	rb(all);
+// 	all->ope--;
+// 	if (all->nb_arg < 42 && all->silent == 1)
+// 		ft_putstr("rr ");
+// 	all->silent = 0;
+// }
+
+// void		rrr(t_all *all)
+// {
+// 	all->silent = 1;
+// 	rra(all);
+// 	rrb(all);
+// 	all->ope--;
+// 	if (all->nb_arg < 42 && all->silent == 1)
+// 		ft_putstr("rrr ");
+// 	all->silent = 0;
+// }

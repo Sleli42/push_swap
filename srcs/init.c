@@ -6,17 +6,47 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/23 08:29:04 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 02:46:32 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack(t_dlist *lst, int ac, char **av)
+int		check_opt(t_opt *opt, char **av)
+{
+	int		i;
+	int		ret;
+
+	i = 1;
+	ret = 1;
+	while (av[i] && av[i][0] == '-' && ft_isdigit(av[1][1]) == 0)
+	{
+		if (av[i][1] == 'c' && opt->c != 1)
+		{
+			if (av[i][2] == 'v' && opt->v != 1)
+				opt->v = 1;
+			opt->c = 1, ret++;
+		}
+		else if (av[i][1] == 'v' && opt->v != 1)
+		{
+			if (av[i][2] == 'c' && opt->c != 1)
+				opt->c = 1;
+			opt->v = 1, ret++;
+		}
+		else
+			error("BAD OPT");
+		i++;
+	}
+	return (ret);
+}
+
+void	init_stack(t_all *all, t_dlist *lst, int ac, char **av)
 {
 	int	i;
 
-	i = 1;
+	i = check_opt(all->opt, av);
+	if (i == ac)
+		error("NO ENTRY");
 	while (i < ac)
 	{
 		if (av[i][0] != '-' && ft_isdigit(av[i][0]) == 0)
@@ -28,46 +58,33 @@ void	init_stack(t_dlist *lst, int ac, char **av)
 	}
 }
 
+t_opt	*init_opt(void)
+{
+	t_opt	*opt;
+
+	opt = NULL;
+	if (!(opt = (t_opt *)malloc(sizeof(t_opt))))
+		error("MALLOC");
+	opt->c = 0;
+	opt->v = 0;
+	return (opt);
+}
+
+
 t_all	*init_all(int ac, char **av)
 {
 	t_all	*all;
-	t_dlist	*tmp;
 
 	all = NULL;
 	if (!(all = (t_all *)malloc(sizeof(t_all))))
-		printf("Malloc error (init_all)\n"), exit(0);
+		error("MALLOC");
 	all->a = create_dlst();
 	all->b = create_dlst();
-	tmp = create_dlst();
-	init_stack(all->a, ac, av);
-	init_stack(tmp, ac, av);
+	all->opt = init_opt();
+	init_stack(all, all->a, ac, av);
 	all->nb_arg = ac - 1;
-	all->already_sort = sort_list(tmp->head, (int)all->nb_arg);
 	all->ope = 0;
-	all->median = find_median(all->already_sort, (int)(all->nb_arg / 2));
 	all->min = find_min_value(all->a->head);
-	all->max = find_max_value(all->a->head);
-	all->push_min = 0;
-	all->push_max = 0;
-	all->val2push = 0;
 	all->silent = 0;
-// 	printf("min %d && max: %d\n", all->min, all->max);
 	return (all);
 }
-
-// + ====================== +
-// Pile a:
-// 	[ 0 ]
-// 	[ 91 ]
-// 	[ 356 ]
-// 	[ 896 ]
-// 	[ -42 ]
-// 	[ 3 ]
-// 	[ 211 ]
-// Pile b:
-// 	[ 21 ]
-// 	[ 12 ]
-// 	[ 7 ]
-// 	[ -91 ]
-// 	[ -411 ]
-// + ====================== +

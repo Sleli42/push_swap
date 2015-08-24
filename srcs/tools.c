@@ -6,22 +6,22 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/23 06:26:15 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 02:53:09 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	choose_sort(t_all *all)
+
+void	sort_parser(t_all *all)
 {
-	if (all->nb_arg > 1 && all->nb_arg <= 8)
-		mini_sort(all);
+	if (all->nb_arg <= 6)
+		mini_sort(all), write(1, "\n", 1);
 	else
-		lulu_sort(all);
-	display_pile(all);
-	printf("nb ope: %d\n", all->ope);
+		medium_sort(all), write(1, "\n", 1);
+	if (all->opt->v && all->nb_arg < 42)
+		display_pile(all);
 }
-// */
+
 void	swap_elem(t_node **first, t_node **next)
 {
 	int		tmp;
@@ -31,33 +31,23 @@ void	swap_elem(t_node **first, t_node **next)
 	(*next)->data = tmp;
 }
 
-t_node	*sort_list(t_node *lst, int lenght)
+void	dlist_del(t_dlist **alst)
 {
-	t_node	*tmp;
+	t_node	*temp;
+	t_node	*del;
 
-	tmp = lst;
-	if (tmp)
+	temp = (*alst)->head;
+	if (*alst && temp)
 	{
-		while (lenght > 0)
+		while (temp)
 		{
-			while (tmp && tmp->next)
-			{
-				if (tmp->data > tmp->next->data)
-					swap_elem(&tmp, &tmp->next);
-				tmp = tmp->next;
-			}
-			tmp = lst;
-			lenght--;
+			del = temp;
+			temp = temp->next;
+			free(del);
 		}
+		free(*alst);
+		*alst = NULL;
 	}
-	return (tmp);
-}
-
-int		find_median(t_node *sorted, int val2stop)
-{
-	while (val2stop-- > 0)
-		sorted = sorted->next;
-	return (sorted->data);
 }
 
 int		find_min_value(t_node *a)
@@ -79,25 +69,4 @@ int		find_min_value(t_node *a)
 		}
 	}
 	return (min);
-}
-
-int		find_max_value(t_node *a)
-{
-	t_node	*tmp;
-	int		max;
-
-	tmp = a;
-	max = 0;
-	if (tmp)
-	{
-		max = tmp->data;
-		tmp = tmp->next;
-		while (tmp)
-		{
-			if (tmp->data > max)
-				max = tmp->data;
-			tmp = tmp->next;
-		}
-	}
-	return (max);
 }

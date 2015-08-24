@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:02 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:19:54 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 02:44:15 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,24 @@ void	display_pile(t_all *all)
 	ft_putstr("Pile b:\n");
 	display_formatting(all->b);
 	ft_putstr("+ ====================== +\n");
+}
+
+void	putcolor(char *s)
+{
+	if (ft_strcmp(s, "rra") == 0)
+		ft_putstr("\e[1;32mrr\e[1;37ma\033[0m ");
+	if (ft_strcmp(s, "ra") == 0)
+		ft_putstr("\e[1;32mr\e[1;37ma\033[0m ");
+	if (ft_strcmp(s, "rrb") == 0)
+		ft_putstr("\e[1;32mrr\e[1;37mb\033[0m ");
+	if (ft_strcmp(s, "rb") == 0)
+		ft_putstr("\e[1;32mr\e[1;37mb\033[0m ");
+	if (ft_strcmp(s, "pa") == 0)
+		ft_putstr("\e[1;35mp\e[1;37ma\033[0m ");
+	if (ft_strcmp(s, "pb") == 0)
+		ft_putstr("\e[1;35mp\e[1;37mb\033[0m ");
+	if (ft_strcmp(s, "sa") == 0)
+		ft_putstr("\e[1;36ms\e[1;37ma\033[0m ");
+	if (ft_strcmp(s, "sb") == 0)
+		ft_putstr("\e[1;36ms\e[1;37mb\033[0m ");
 }
