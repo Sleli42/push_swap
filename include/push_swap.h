@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:42:20 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 05:41:32 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_opt
 {
 	int				c;
 	int				v;
+	int				i;
 }					t_opt;
 
 typedef	struct		s_all
@@ -48,9 +49,20 @@ typedef	struct		s_all
 	int				ope;
 }					t_all;
 
+typedef struct		s_action
+{
+	char			*op;
+	void			(*f)(t_all *);
+}					t_action;
+
+int		check_interactive_error(t_all *all, char *s);
+int		get_op(t_all *all, char *buff);
+void	interactive_mode(t_all *all);
+
 /*
 *** init.c
 */
+int					add_opt(t_opt *opt, char *s);
 int					check_opt(t_opt *opt, char **av);
 void				init_stack(t_all *all, t_dlist *lst, int ac, char **av);
 t_opt				*init_opt(void);

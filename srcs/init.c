@@ -6,11 +6,26 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:46:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 04:34:32 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		add_opt(t_opt *opt, char *s)
+{
+	while (*s)
+	{
+		if (*s == 'c')
+			opt->c = 1;
+		else if (*s == 'v')
+			opt->v = 1;
+		else if (*s == 'i')
+			opt->i = 1;
+		s++;
+	}
+	return (1);
+}
 
 int		check_opt(t_opt *opt, char **av)
 {
@@ -19,24 +34,8 @@ int		check_opt(t_opt *opt, char **av)
 
 	i = 1;
 	ret = 1;
-	while (av[i] && av[i][0] == '-' && ft_isdigit(av[1][1]) == 0)
-	{
-		if (av[i][1] == 'c' && opt->c != 1)
-		{
-			if (av[i][2] == 'v' && opt->v != 1)
-				opt->v = 1;
-			opt->c = 1, ret++;
-		}
-		else if (av[i][1] == 'v' && opt->v != 1)
-		{
-			if (av[i][2] == 'c' && opt->c != 1)
-				opt->c = 1;
-			opt->v = 1, ret++;
-		}
-		else
-			error("BAD OPT");
-		i++;
-	}
+	while (av[i] && av[i][0] == '-' && !ft_isdigit(av[i][1]))
+		ret += add_opt(opt, (av[i] + 1)), i++;
 	return (ret);
 }
 
@@ -82,7 +81,7 @@ t_all	*init_all(int ac, char **av)
 	all->b = create_dlst();
 	all->opt = init_opt();
 	init_stack(all, all->a, ac, av);
-	all->nb_arg = ac - 1;
+	all->nb_arg = all->a->lenght;
 	all->ope = 0;
 	all->min = find_min_value(all->a->head);
 	all->silent = 0;

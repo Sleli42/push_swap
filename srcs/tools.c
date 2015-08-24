@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:53:09 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 04:26:48 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_parser(t_all *all)
 		mini_sort(all), write(1, "\n", 1);
 	else
 		medium_sort(all), write(1, "\n", 1);
-	if (all->opt->v && all->nb_arg < 42)
+	if (all->opt->v && all->nb_arg > 6 && all->nb_arg < 42)
 		display_pile(all);
 }
 
