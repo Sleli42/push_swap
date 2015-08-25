@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/06 00:13:12 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 01:56:51 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 20:06:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void	error(char *err)
 {
 	if (ft_strcmp(err, "NO DIGIT") == 0)
-		ft_putstr("Error\nmore infos: Params not digit\n"), exit(1);
+		ft_putstr("Error\nmore infos: Params not digit\n");
 	if (ft_strcmp(err, "DOUBLONS") == 0)
-		ft_putstr("Error\nmore infos: Doublons\n"), exit(1);
+		ft_putstr("Error\nmore infos: Doublons\n");
 	if (ft_strcmp(err, "OVERFLOW") == 0)
-		ft_putstr("Error\nmore infos: > int\n"), exit(1);
+		ft_putstr("Error\nmore infos: > int\n");
 	if (ft_strcmp(err, "MALLOC") == 0)
-		ft_putstr("Malloc error\n"), exit(1);
+		ft_putstr("Malloc error\n");
 	if (ft_strcmp(err, "BAD OPT") == 0)
-		ft_putstr("Bad options\n"), exit(1);
+		ft_putstr("Bad options\n");
 	if (ft_strcmp(err, "NO ENTRY") == 0)
-		ft_putstr("No entry, please enter values ...\n"), exit(1);
+		ft_putstr("No entry, please enter values ...\n");
+	exit(1);
 }
 
 void	check_error(t_all *all)

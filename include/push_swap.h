@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:13 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 05:41:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 23:58:37 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "libft.h"
+# include "colors.h"
 
 typedef struct		s_node
 {
@@ -54,11 +55,13 @@ typedef struct		s_action
 	char			*op;
 	void			(*f)(t_all *);
 }					t_action;
-
-int		check_interactive_error(t_all *all, char *s);
-int		get_op(t_all *all, char *buff);
-void	interactive_mode(t_all *all);
-
+/*
+*** ========= BONUS =========
+*/
+int					check_interactive_error(t_all *all, char *s);
+int					get_op(t_all *all, char *buff);
+void				display_interactive_start(void);
+void				interactive_mode(t_all *all);
 /*
 *** init.c
 */
@@ -80,26 +83,27 @@ t_dlist				*dlst_del_one(t_dlist *lst, int data2del);
 */
 void				display_pile(t_all *all);
 void				display_formatting(t_dlist *pile);
-void				putcolor(char *s);
+void				putaction(char *s);
+void				putcolor(char *toput, char *color);
 /*
 *** sort.c
 */
 int					a_is_sort(t_node *a);
 int					count_moves(t_node *a, int val2find);
 void				medium_sort(t_all *all);
+void				op_mini_sort(t_all *all);
 void				mini_sort(t_all *all);
 /*
 *** tools.c
 */
 void				sort_parser(t_all *all);
 void				swap_elem(t_node **first, t_node **next);
+int					update_list(t_dlist *lst, t_node *elem);
 int					find_min_value(t_node *a);
 void				dlist_del(t_dlist **alst);
 /*
 *** r_op.c
 */
-// void				rr(t_all *all);
-// void				rrr(t_all *all);
 void				ra(t_all *all);
 void				rra(t_all *all);
 void				rb(t_all *all);

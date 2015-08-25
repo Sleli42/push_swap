@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:16:17 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 04:26:48 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 20:26:41 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 void	sort_parser(t_all *all)
 {
 	if (all->nb_arg <= 6)
-		mini_sort(all), write(1, "\n", 1);
+	{
+		mini_sort(all);
+		write(1, "\n", 1);
+	}
 	else
-		medium_sort(all), write(1, "\n", 1);
+	{
+		medium_sort(all);
+		write(1, "\n", 1);
+	}
 	if (all->opt->v && all->nb_arg > 6 && all->nb_arg < 42)
 		display_pile(all);
 }
@@ -29,6 +35,22 @@ void	swap_elem(t_node **first, t_node **next)
 	tmp = (*first)->data;
 	(*first)->data = (*next)->data;
 	(*next)->data = tmp;
+}
+
+int		update_list(t_dlist *lst, t_node *elem)
+{
+	if (!elem->next && elem->prev)
+	{
+		lst->tail = elem->prev;
+		lst->tail->next = NULL;
+	}
+	else if (!elem->prev && elem->next)
+	{
+		lst->head = elem->next;
+		lst->head->prev = NULL;
+	}
+	lst->lenght--;
+	return (1);
 }
 
 void	dlist_del(t_dlist **alst)

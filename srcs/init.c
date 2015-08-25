@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:08 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 04:34:32 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 20:07:34 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int		check_opt(t_opt *opt, char **av)
 	i = 1;
 	ret = 1;
 	while (av[i] && av[i][0] == '-' && !ft_isdigit(av[i][1]))
-		ret += add_opt(opt, (av[i] + 1)), i++;
+	{
+		ret += add_opt(opt, (av[i] + 1));
+		i++;
+	}
 	return (ret);
 }
 
@@ -53,7 +56,10 @@ void	init_stack(t_all *all, t_dlist *lst, int ac, char **av)
 		if (av[i][0] != '-' && ft_atoi(av[i]) == -1)
 			error("OVERFLOW");
 		else
-			dlst_add_back(lst, dlst_new(ft_atoi(av[i]))), i++;
+		{
+			dlst_add_back(lst, dlst_new(ft_atoi(av[i])));
+			i++;
+		}
 	}
 }
 
@@ -68,7 +74,6 @@ t_opt	*init_opt(void)
 	opt->v = 0;
 	return (opt);
 }
-
 
 t_all	*init_all(int ac, char **av)
 {

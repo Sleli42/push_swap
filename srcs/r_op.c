@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:39:23 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 23:46:20 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void		ra(t_all *all)
 	if (all->nb_arg < 42 && all->silent == 0)
 	{
 		if (all->opt->c)
-			putcolor("ra");
+		{
+			putcolor("r", BOLD_GREEN);
+			putcolor("a", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("ra ");
 	}
@@ -40,7 +43,10 @@ void		rra(t_all *all)
 	if (all->nb_arg < 42 && all->silent == 0)
 	{
 		if (all->opt->c)
-			putcolor("rra");
+		{
+			putcolor("rr", BOLD_GREEN);
+			putcolor("a", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("rra ");
 	}
@@ -57,7 +63,10 @@ void		rb(t_all *all)
 	if (all->nb_arg < 42 && all->silent == 0)
 	{
 		if (all->opt->c)
-			putcolor("rb");
+		{
+			putcolor("r", BOLD_GREEN);
+			putcolor("b", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("rb ");
 	}
@@ -74,30 +83,11 @@ void		rrb(t_all *all)
 	if (all->nb_arg < 42 && all->silent == 0)
 	{
 		if (all->opt->c)
-			putcolor("rrb");
+		{
+			putcolor("rr", BOLD_GREEN);
+			putcolor("b", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("rrb ");
 	}
 }
-
-// void		rr(t_all *all)
-// {
-// 	all->silent = 1;
-// 	ra(all);
-// 	rb(all);
-// 	all->ope--;
-// 	if (all->nb_arg < 42 && all->silent == 1)
-// 		ft_putstr("rr ");
-// 	all->silent = 0;
-// }
-
-// void		rrr(t_all *all)
-// {
-// 	all->silent = 1;
-// 	rra(all);
-// 	rrb(all);
-// 	all->ope--;
-// 	if (all->nb_arg < 42 && all->silent == 1)
-// 		ft_putstr("rrr ");
-// 	all->silent = 0;
-// }

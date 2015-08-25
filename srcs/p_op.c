@@ -6,10 +6,9 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:48:44 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 23:46:21 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -26,7 +25,10 @@ void		pb(t_all *all)
 	if (all->nb_arg < 42)
 	{
 		if (all->opt->c)
-			putcolor("pb");
+		{
+			putcolor("p", BOLD_MAGENTA);
+			putcolor("b", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("pb ");
 	}
@@ -45,7 +47,10 @@ void		pa(t_all *all)
 	if (all->nb_arg < 42)
 	{
 		if (all->opt->c)
-			putcolor("pa");
+		{
+			putcolor("p", BOLD_MAGENTA);
+			putcolor("a", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("pa ");
 	}

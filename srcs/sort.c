@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:19:40 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 04:28:08 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 20:15:41 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,25 @@ void	medium_sort(t_all *all)
 	medium_sort(all);
 }
 
+void	op_mini_sort(t_all *all)
+{
+	if (A->data > A->next->data)
+	{
+		if (A->data > LAST_A->data)
+			ra(all);
+		else
+			sa(all);
+	}
+	else
+	{
+		if (A->data > LAST_A->data)
+			ra(all);
+		else
+			pb(all);
+	}
+	mini_sort(all);
+}
+
 void	mini_sort(t_all *all)
 {
 	if (all->opt->v && all->nb_arg < 42)
@@ -88,24 +107,9 @@ void	mini_sort(t_all *all)
 		{
 			pa(all);
 			if (A->data > A->next->data)
-				mini_sort(all);
+				op_mini_sort(all);
 		}
 		return ;
 	}
-	if (A->data > A->next->data)
-	{
-		if (A->data > LAST_A->data)
-			ra(all);
-		else
-			sa(all);
-		mini_sort(all);
-	}
-	else
-	{
-		if (A->data > LAST_A->data)
-			ra(all);
-		else
-			pb(all);
-		mini_sort(all);
-	}
+	op_mini_sort(all);
 }

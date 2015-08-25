@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/05 23:55:20 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/18 03:34:27 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 23:49:25 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,17 @@ t_dlist		*dlst_del_one(t_dlist *lst, int data2del)
 		{
 			if (tmp->data == data2del)
 			{
-				if (!tmp->next && tmp->prev)
-				{
-					lst->tail = tmp->prev;
-					lst->tail->next = NULL;
-				}
-				else if (!tmp->prev && tmp->next)
-				{
-					lst->head = tmp->next;
-					lst->head->prev = NULL;
-				}
-				else if (!tmp->next && !tmp->prev)
+				if (!tmp->next && !tmp->prev)
 				{
 					free(lst);
 					lst = create_dlst();
 					return (lst);
 				}
+				else
+					found = update_list(lst, tmp);
 				free(tmp);
-				lst->lenght--;
-				found = 1;
 			}
-			else
-				tmp = tmp->next;
+			tmp = tmp->next;
 		}
 	}
 	return (lst);

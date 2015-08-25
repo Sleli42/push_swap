@@ -6,7 +6,7 @@
 /*   By: lubaujar <lubaujar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 00:33:48 by lubaujar          #+#    #+#             */
-/*   Updated: 2015/08/24 02:43:56 by lubaujar         ###   ########.fr       */
+/*   Updated: 2015/08/24 23:46:17 by lubaujar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void		sa(t_all *all)
 	if (all->nb_arg < 42)
 	{
 		if (all->opt->c)
-			putcolor("sa");
+		{
+			putcolor("s", BOLD_CYAN);
+			putcolor("a", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("sa ");
 	}
@@ -31,7 +34,10 @@ void		sb(t_all *all)
 	if (all->nb_arg < 42)
 	{
 		if (all->opt->c)
-			putcolor("sb");
+		{
+			putcolor("s", BOLD_CYAN);
+			putcolor("b", BOLD_LIGHT_GREY);
+		}
 		else
 			ft_putstr("sb ");
 	}
