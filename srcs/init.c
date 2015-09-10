@@ -90,5 +90,6 @@ t_all	*init_all(int ac, char **av)
 	all->ope = 0;
 	all->min = find_min_value(all->a->head);
 	all->silent = 0;
+	all->all_ope = NULL;
 	return (all);
 }

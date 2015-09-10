@@ -26,6 +26,7 @@ void		ra(t_all *all)
 		{
 			putcolor("r", BOLD_GREEN);
 			putcolor("a", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("ra ");
@@ -46,6 +47,7 @@ void		rra(t_all *all)
 		{
 			putcolor("rr", BOLD_GREEN);
 			putcolor("a", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("rra ");
@@ -66,6 +68,7 @@ void		rb(t_all *all)
 		{
 			putcolor("r", BOLD_GREEN);
 			putcolor("b", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("rb ");
@@ -86,6 +89,7 @@ void		rrb(t_all *all)
 		{
 			putcolor("rr", BOLD_GREEN);
 			putcolor("b", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("rrb ");

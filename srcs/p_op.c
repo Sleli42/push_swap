@@ -28,6 +28,7 @@ void		pb(t_all *all)
 		{
 			putcolor("p", BOLD_MAGENTA);
 			putcolor("b", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("pb ");
@@ -50,6 +51,7 @@ void		pa(t_all *all)
 		{
 			putcolor("p", BOLD_MAGENTA);
 			putcolor("a", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("pa ");

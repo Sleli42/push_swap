@@ -21,6 +21,7 @@ void		sa(t_all *all)
 		{
 			putcolor("s", BOLD_CYAN);
 			putcolor("a", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("sa ");
@@ -37,6 +38,7 @@ void		sb(t_all *all)
 		{
 			putcolor("s", BOLD_CYAN);
 			putcolor("b", BOLD_LIGHT_GREY);
+			write(1, " ", 1);
 		}
 		else
 			ft_putstr("sb ");

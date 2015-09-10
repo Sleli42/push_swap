@@ -48,6 +48,7 @@ typedef	struct		s_all
 	int				silent;
 	size_t			nb_arg;
 	int				ope;
+	char			*all_ope;
 }					t_all;
 
 typedef struct		s_action
@@ -55,8 +56,9 @@ typedef struct		s_action
 	char			*op;
 	void			(*f)(t_all *);
 }					t_action;
+
 /*
-*** ========= BONUS =========
+*** interative.c.c
 */
 int					check_interactive_error(t_all *all, char *s);
 int					get_op(t_all *all, char *buff);

@@ -24,7 +24,8 @@ SRC = main.c \
 	p_op.c \
 	s_op.c \
 	tools.c \
-	sort.c
+	sort.c \
+	interactive.c
 
 OBJ = $(SRC:.c=.o)
 	SRCDIR	= ./srcs/
